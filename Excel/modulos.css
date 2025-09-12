@@ -1,0 +1,195 @@
+root {
+    --primary-color: #185159;       /* Color principal oscuro */
+    --secondary-color: #61A9B4;     /* Azul verdoso claro */
+    --accent-color: #95BC4E;        /* Verde vibrante */
+    --light-color: #F0F7F9;        /* Fondo claro azulado */
+    --dark-color: #1A2E35;          /* Texto oscuro */
+    --highlight-color: #D4EDF4;    /* Destello azul claro */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, var(--primary-color), #0F3D46);
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(213, 239, 244, 0.15) 0%, transparent 70%);
+    transform: rotate(30deg);
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: var(--highlight-color);
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+}
+
+.modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.module-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.module-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.12);
+}
+
+.module-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--accent-color), #A8D672);
+}
+
+.module-content {
+    padding: 2rem;
+    position: relative;
+}
+
+.module-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    background: rgba(149, 188, 78, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+}
+
+.module-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    transition: color 0.3s;
+}
+
+.module-card:hover .module-title {
+    color: var(--secondary-color);
+}
+
+.module-description {
+    color: #5F6C72;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.module-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, var(--secondary-color), #4E9BA9);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(97, 169, 180, 0.3);
+}
+
+.module-link:hover {
+    background: linear-gradient(135deg, var(--accent-color), #7CA839);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(149, 188, 78, 0.4);
+}
+
+.module-link::after {
+    content: '→';
+    margin-left: 0.5rem;
+    transition: transform 0.3s;
+}
+
+.module-link:hover::after {
+    transform: translateX(3px);
+}
+
+footer {
+    text-align: center;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    color: #6C7A80;
+    font-size: 0.9rem;
+}
+
+footer p {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .modules-grid {
+        grid-template-columns: 1fr;
+    }
+   
+    h1 {
+        font-size: 2.2rem;
+    }
+   
+    h2 {
+        font-size: 1.4rem;
+    }
+   
+    .module-link {
+        padding: 0.5rem 1.2rem;
+    }
+}

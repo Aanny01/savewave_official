@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SafeWave</title>
+  <link rel="icon" type="image/png" href="Imagenes/Logo.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://kit.fontawesome.com/a5dcd729dd.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+  <!-- ========== ENCABEZADO SUPERIOR ========== -->
+<header>
+  <div class="logo">
+    <img src="Imagenes/Logo.png" alt="SafeWave Logo" />
+    SafeWave
+  </div>
+  <nav>
+    <a href="index.html" class="active">Home</a>
+    <a href="about-us.html">About us</a>
+    <a href="Courses.html">Courses</a>
+    <a href="#">Gallery</a>
+    <a href="Contact.html">Contact</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Buscar..." />
+      🔍
+    </div>
+    <a href="L-R.html" class="user-btn" title="Registrarse">
+      <i class="fa-solid fa-user"></i>
+    </a>
+  </div>
+</header>
+
+
+
+  <!-- ========== SECCIÓN PRINCIPAL HERO CON VIDEO DE FONDO ========== -->
+  <section class="hero">
+
+    <!-- 🎥 VIDEO DE FONDO - COLOCAR AQUÍ TU VIDEO fondo.mp4 EN LA MISMA CARPETA -->
+    <video autoplay muted loop playsinline class="bg-video">
+      <source src="Videos/Fondo.mp4" type="video/mp4" />
+      Tu navegador no soporta video HTML5.
+    </video>
+
+    <!-- TEXTO PRINCIPAL -->
+    <h1>
+      Build a <span class="highlight-blue">Future</span><br />
+      that drives to <span class="highlight-green">Success</span>
+    </h1>
+
+    <!-- BOTÓN "Log in" -->
+    <a class="btn-transparente" href="L-R.html">Log in →</a>
+
+    <!-- PUNTOS DE NAVEGACIÓN A LA DERECHA -->
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <!-- BOTÓN "Explore" FLOTANTE -->
+    <button class="explore-btn">EXPLORE</button>
+
+  </section>
+
+  <!-- ========== SECCIÓN DE PLANES Y PRECIOS ========== -->
+  <main class="wrapper">
+    <div class="muted" style="text-align:center; text-transform:uppercase; font-weight:700; letter-spacing:.2em;">Web Consulting</div>
+    <h1 class="Pplanes">PACKAGES & PRICING</h1>
+    <section class="grid">
+      <article class="card card--light">
+        <div class="plan-title">Basic Plan</div>
+        <div class="big-free">FREE</div>
+        <ul class="features">
+          <li><span class="dot"></span><span>Sample Lessons</span></li>
+          <li><span class="dot"></span><span>Basic Material &amp; Challenges</span></li>
+          <li><span class="dot"></span><span>Access to a free Certification Course Demo.</span></li>
+        </ul>
+        <a href="success.html" class="btn btn-secondary">See More</a>
+      </article>
+
+      <article class="card featured">
+        <div class="plan-title">Premium Plan</div>
+        <div class="price">$4.99 <sup>/month</sup></div>
+        <ul class="features">
+          <li><span class="dot"></span><span>Discounts on Specialized Events or Workshops</span></li>
+          <li><span class="dot"></span><span>Certification for the Digital Security Course</span></li>
+          <li><span class="dot"></span><span>Supplementary Digital Humanization Resources</span></li>
+          <li><span class="dot"></span><span>Personal Security Modules</span></li>
+          <li><span class="dot"></span><span>VIP Pass Line Personal</span></li>
+          <li><span class="dot"></span><span>Practical Projects</span></li>
+        </ul>
+        <a href="https://buy.stripe.com/test_dRm00k0voh1F6O1bw5gfu01" class="btn btn-primary">See More</a>
+      </article>
+
+      <article class="card card--light">
+        <div class="plan-title">Corporate Plan</div>
+        <div class="price">$9.99 <sup>/month</sup></div>
+        <ul class="features">
+          <li><span class="dot"></span><span>Small Business Security Modules</span></li>
+          <li><span class="dot"></span><span>Group Mentorship</span></li>
+          <li><span class="dot"></span><span>VIP Pass Line Corporate</span></li>
+          <li><span class="dot"></span><span>Access to a Demonstration Lesson of the Certification Course</span></li>
+          <li><span class="dot"></span><span>Discounts on Digital Humanization Events and Consultations</span></li>
+        </ul>
+        <a href="https://buy.stripe.com/test_14A8wQce612H4FTgQpgfu00" class="btn btn-secondary">See More</a>
+      </article>
+    </section>
+  </main>
+
+  <!-- ========== SECCIÓN DE TESTIMONIOS DE CLIENTES ========== -->
+  <section class="testimonials-section">
+    <div class="carousel-container">
+      <h1 class="carousel-title">OUR CLIENTS</h1>
+      
+      <div class="carousel">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="client-card active" data-index="0">
+            <div class="stars">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <div class="client-photo">
+              <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Carla Figueroa">
+            </div>
+            <div class="client-name">Carla Figueroa</div>
+            <div class="client-testimonial">"This platform helped me improve my digital skills and feel more confident for college."</div>
+          </div>
+          
+          <div class="client-card next" data-index="1">
+            <div class="stars">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <div class="client-photo">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Elías Gutiérrez">
+            </div>
+            <div class="client-name">Elías Gutiérrez</div>
+            <div class="client-testimonial">"I finally understand online safety and how to protect my data. Super useful!"</div>
+          </div>
+          
+          <div class="client-card far-right" data-index="2">
+            <div class="stars">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <div class="client-photo">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Sandra Rentería">
+            </div>
+            <div class="client-name">Sandra Rentería</div>
+            <div class="client-testimonial">"The lessons are clear, interactive, and actually fun. I loved learning Python here."</div>
+          </div>
+
+          <div class="client-card hidden" data-index="3">
+            <div class="stars">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <div class="client-photo">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Miguel Torres">
+            </div>
+            <div class="client-name">Miguel Torres</div>
+            <div class="client-testimonial">"Amazing experience! The courses are well-structured and easy to follow."</div>
+          </div>
+
+          <div class="client-card hidden" data-index="4">
+            <div class="stars">
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+              <span class="star">★</span>
+            </div>
+            <div class="client-photo">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" alt="Ana López">
+            </div>
+            <div class="client-name">Ana López</div>
+            <div class="client-testimonial">"Perfect for beginners! I learned so much in just a few weeks."</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="carousel-controls">
+        <button class="control-btn prev-btn" onclick="previousSlide()">PREV</button>
+        <button class="control-btn next-btn" onclick="nextSlide()">NEXT ▶</button>
+      </div>
+      
+      <div class="carousel-dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+      </div>
+    </div>
+  </section>
+
+   <!-- Footer de chill -->
+  <footer class="footer">
+  <div class="footer-container">
+    
+    <!-- Logo y descripción -->
+    <div class="footer-section">
+      <img src="Imagenes/Footer.png" alt="Safe Wave Logo" class="footer-logo">
+      <p>Connecting young people, creating unforgettable experiences and building the future, one click at a time.</p>
+    </div>
+
+    <!-- Enlaces rápidos -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="Courses.html">Courses</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contacto -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Safewafe@gmail.com</p>
+      <p>+507 1234-5678</p>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="footer-section">
+      <h3>Follow us at</h3>
+      <div class="footer-socials">
+        <li><a href="#"><i class="fa-brands fa-facebook"></i>  Facebook </a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i>  Instagram</a></li>
+        <li><a href="#"><i class="fa-brands fa-whatsapp"></i>  WhatsApp</a></li>
+      </div>
+    </div>
+  </div>
+
+  <!-- Línea divisoria y derechos -->
+  <hr class="footer-line">
+  <p class="footer-copy">© 2025 Safe Wave. All rights reserved. - Made with love for youth.</p>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

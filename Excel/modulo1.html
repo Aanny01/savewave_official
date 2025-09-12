@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1: Introducción a las Hojas de Cálculo</title>
+     <link rel="icon" type="image/png" href="Logo.png">
+    <style>
+        :root {
+            --primary-color: #217346; /* Verde Excel */
+            --secondary-color: #1f4e79; /* Azul oscuro */
+            --accent-color: #e7f3e6; /* Verde claro */
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-color: #ddd;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        /* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: transparent;
+}
+
+header nav a {
+  position: relative;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s;
+  padding-bottom: 4px;
+}
+
+header nav a:hover,
+header nav a.active {
+  color: #32cd32;
+}
+
+
+header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #32cd32;
+  transition: width 0.3s;
+}
+
+header nav a:hover::after,
+header nav a.active::after {
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+/* Menú de navegación */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #ffffff; /* Usa blanco para mejor contraste */
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #32cd32;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #32cd32;
+  transition: width 0.3s;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  background-color: transparent;
+  border: 1.5px solid #333;
+  border-radius: 20px;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  color: rgb(0, 0, 0);
+  outline: none;
+  padding: 5px;
+}
+
+.user-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px; /* Reduce el espacio entre la barra y el icono */
+  background: transparent;
+  border: none;
+  font-size: 1.6em;
+  color: #32cd32;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.user-btn:hover {
+  color: #228b22;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Espacio pequeño entre barra y usuario */
+}
+
+     /*Resalto del texto*/
+
+    .highlight-search {
+      background: yellow;
+      color: black;
+      border-radius: 3px;
+      padding: 0 2px;
+    }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+       .page-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.page-header .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.back-btn {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 8px 18px;
+  background: var(--secondary-color);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.back-btn:hover {
+  background: var(--primary-color);
+}
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .module-content {
+            padding: 30px;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin: 20px 0 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .card {
+            background-color: var(--light-gray);
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            background-color: var(--accent-color);
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .grid-item {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .grid-item h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .advantages {
+            background-color: #e7f3ff;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        /* ===== FOOTER ===== */
+    .footer {
+      background-color: #0a1a2b;
+      color: white;
+      padding: 40px 20px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .footer-section {
+      flex: 1 1 250px;
+      margin: 10px;
+    }
+
+    .footer-logo {
+      width: 220px;
+    }
+
+    .footer h2 {
+      color: #7ed957;
+      margin-top: 10px;
+    }
+
+    .footer h3 {
+      color: #7ed957;
+      margin-bottom: 10px;
+    }
+
+    .footer-section p {
+      max-width: 260px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin: 6px 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+      color: #7ed957;
+      cursor: pointer;
+    }
+
+    .footer-socials img {
+      width: 30px;
+      margin: 5px;
+      transition: transform 0.2s;
+    }
+
+    .footer-socials img:hover {
+      transform: scale(1.2);
+    }
+
+    .footer-line {
+      margin: 30px auto;
+      border-color: #2c3e50;
+      max-width: 90%;
+    }
+
+    .footer-copy {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+        
+        /* Estilos para imágenes interactivas */
+        .interactive-image {
+            position: relative;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .interactive-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .interactive-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .interactive-image:hover img {
+            transform: scale(1.03);
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .interactive-image:hover .image-overlay {
+            opacity: 1;
+        }
+        
+        .image-caption {
+            font-style: italic;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 800px;
+            animation: zoom 0.3s;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        @keyframes zoom {
+            from {transform: scale(0.9); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .image-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .image-card-content {
+            padding: 15px;
+        }
+        
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            margin: 25px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-slider img {
+            width: 100%;
+            display: block;
+        }
+        
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: white;
+            left: 50%;
+            cursor: ew-resize;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slider-handle:after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .grid-container, .image-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .module-content {
+                padding: 20px;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+    <!-- Iconos para los placeholders -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+  <div class="logo">
+    <img src="Logo.png" alt="SafeWave Logo" />
+    SafeWave
+  </div>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../about-us.html">About us</a>
+    <a href="Courses.html"  class="active">Courses</a>
+    <a href="#">Gallery</a>
+    <a href="../Contact.html">Contact</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Buscar..." />
+      🔍
+    </div>
+    <a href="L-R.html" class="user-btn" title="Registrarse">
+      <i class="fa-solid fa-user"></i>
+    </a>
+  </div>
+</header>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Module 1: Introduction to Spreadsheets</h1>
+            <p class="subtitle">Understanding what a spreadsheet is, its main applications, and its usefulness in data management</p>
+        </div>
+
+        <a href="Excel.html" class="back-btn">
+           ← Return to Excel
+        </a>
+       
+        <div class="module-content">
+            <h2>Definition of spreadsheet and its historical evolution</h2>
+            
+            <!-- Imagen interactiva de introducción -->
+            <div class="interactive-image" onclick="openModal('excelInterface')">
+                <img src="Imagenes/maxresdefault_a002939b-5f14-4425-9bd5-61f7777f47cf.webp" alt="Interfaz de Excel mostrando celdas y fórmulas">
+                <div class="image-overlay">
+                    <h3>Microsoft Excel Interface</h3>
+                    <p>Click to enlarge the image and explore the different components of the interface</p>
+                </div>
+            </div>
+            <div class="image-caption">Figure 1: Microsoft Excel interface showing cells, formulas, and main tools</div>
+            
+            <h3>What is a spreadsheet?</h3>
+            <div class="card">
+                <ul>
+                    <li>A <span class="highlight">giant grid</span> filled with rows and columns. Each “box” is called a <span class="highlight">cell</span>.</li>
+                    <li>In each cell, you can enter <span class="highlight">numbers, text, or formulas</span> that automatically perform calculations.</li>
+                    <li>It's like a powerful calculator, a smart notebook, and a simple database, all in one.</li>
+                    <li>The best-known programs are <span class="highlight">Microsoft Excel</span>, Google Sheets, and LibreOffice Calc.</li>
+                </ul>
+            </div>
+            
+            <h3>Historical evolution:</h3>
+            
+            <!-- Imágenes de evolución histórica -->
+            <div class="image-grid">
+                <div class="image-card" onclick="openModal('visicalc')">
+                    <img src="imagen1.jpeg" alt="VisiCalc (1979)">
+                    <div class="image-card-content">
+                        <h3>VisiCalc (1979)</h3>
+                        <p>First digital spreadsheet, created by Dan Bricklin and Bob Frankston</p>
+                    </div>
+                </div>
+                <div class="image-card" onclick="openModal('lotus')">
+                    <img src="Imagenes/lotus-1-2-3.png" alt="Lotus 1-2-3 (1983)">
+                    <div class="image-card-content">
+                        <h3>Lotus 1-2-3 (1983)</h3>
+                        <p>Popularized PC spreadsheets with built-in charting capabilities</p>
+                    </div>
+                </div>
+                <div class="image-card" onclick="openModal('excel1985')">
+                    <img src="Imagenes/2f69b86d-ee44-44da-b0a7-6edaad6628c9.jpeg" alt="Excel (1985)">
+                    <div class="image-card-content">
+                        <h3>Excel (1985)</h3>
+                        <p>It revolutionized with its graphical interface and became the industry standard. </p>
+                    </div>
+                </div>
+            </div>
+            
+            <ul>
+                <li>Originally, <span class="highlight">sheets of paper with tables</span> were used for financial calculations.</li>
+                <li>In the 1970s, <span class="highlight">VisiCalc</span>, the first digital spreadsheet, emerged and revolutionized data management.</li>
+                <li>In the 1980s, <span class="highlight">Lotus 1-2-3</span> became popular.</li>
+                <li>In the mid-1980s, <span class="highlight">Microsoft launched Excel</span>, which became the market leader thanks to its graphical interface and advanced features.</li>
+            </ul>
+            
+            <h2>Common uses of Excel in different fields</h2>
+            
+            <!-- Comparación interactiva de casos de uso -->
+            <div class="comparison-slider" id="comparisonSlider">
+                <div style="position: absolute; top: 0; bottom: 0; left: 0; right: 50%; overflow: hidden;">
+                    <img src="Imagenes/10-funciones-Excel-1.jpg" alt="Usos financieros de Excel" style="width: 200%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="position: absolute; top: 0; bottom: 0; right: 0; left: 50%; overflow: hidden;">
+                    <img src="https://img.freepik.com/foto-gratis/vista-superior-material-oficina_23-2148503789.jpg" alt="Usos administrativos de Excel" style="width: 200%; height: 100%; object-fit: cover; position: absolute; right: 0;">
+                </div>
+                <div class="slider-handle" id="sliderHandle"></div>
+            </div>
+            <div class="image-caption">Figure 2: Slide to compare financial (left) and administrative (right) uses of Excel</div>
+            
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Academic</h3>
+                    <ul>
+                        <li>Organizing notes and grades</li>
+                        <li>Project budgets</li>
+                        <li>Recording experiment data</li>
+                        <li>Creating schedules</li>
+                    </ul>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>Finance</h3>
+                    <ul>
+                        <li>Business accounting</li>
+                        <li>Investment analysis</li>
+                        <li>Personal and family budgets</li>
+                        <li>Sales projections</li>
+                    </ul>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>Administrative</h3>
+                    <ul>
+                        <li>Employee lists, inventories, contacts</li>
+                        <li>Project planning</li>
+                        <li>Reports with tables and graphs</li>
+                        <li>Attendance tracking</li>
+                    </ul>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>Personal</h3>
+                    <ul>
+                        <li>Monthly expense tracking</li>
+                        <li>Travel planning</li>
+                        <li>Shopping lists</li>
+                        <li>Personal goal tracking</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h2>Advantages of using spreadsheets over other methods</h2>
+            
+            <!-- Imagen interactiva de ventajas -->
+            <div class="interactive-image" onclick="openModal('excelVsManual')">
+                <img src="Imagenes/VENTAJAS.jpg" alt="Comparación entre método manual y hoja de cálculo">
+                <div class="image-overlay">
+                    <h3>Excel vs. Manual Methods</h3>
+                    <p>Click to enlarge and see how Excel improves data processing efficiency</p>
+                </div>
+            </div>
+            <div class="image-caption">Figure 3: Visual comparison of efficiency between using Excel (right) and traditional methods (left)</div>
+            
+            <div class="card advantages">
+                <ul>
+                    <li><span class="highlight">Calculation automation</span>: Formulas are updated automatically</li>
+                    <li><span class="highlight">Clear organization</span>: Structure in rows and columns</li>
+                    <li><span class="highlight">Data analysis</span>: Easily sort, filter, and search for information</li>
+                    <li><span class="highlight">Data visualization</span>: Create charts to better understand the information</li>
+                    <li><span class="highlight">Flexibility</span>: Customize tables, colors, and formats</li>
+                    <li><span class="highlight">Error detection</span>: Minimize human error in calculations</li>
+                    <li><span class="highlight">Sharing and collaboration</span>: Work as a team in real time</li>
+                    <li><span class="highlight">Time saving</span>: Automate repetitive tasks</li>
+                </ul>
+            </div>
+            
+            <h2>Basic concepts: workbook, spreadsheet, cell</h2>
+            
+            <!-- Imagen interactiva de conceptos básicos -->
+            <div class="interactive-image" onclick="openModal('excelComponents')">
+                <img src="Imagenes/conceptos basicos Excel.webp" alt="Partes de la interfaz de Excel">
+                <div class="image-overlay">
+                    h3>Excel Components</h3>
+                    <p>Click to explore the different elements of the Excel interface</p>
+                </div>
+            </div>
+            <div class="image-grid">Figure 4: Main components of the Excel interface: workbook, sheets, and cells</div>
+            
+           <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Workbook</h3>
+                    <p>This is the complete Excel file (.xlsx or .xls). It can contain one or more worksheets. </p>
+                </div>
+
+                <div class="grid-item">
+                    <h3>Worksheet</h3>
+                    <p>Each “page” within the workbook. By default, it is called “Sheet1” and contains a grid for organizing data. </p>
+                </div>
+                
+                <div class="grid-item">
+                    <h3>Cell</h3>
+                    <p>The basic unit of a spreadsheet. Each cell has a unique address (e.g., A1, B5) consisting of the column and row. </p>
+                </div>
+            </div>
+            
+            <!-- Ejemplos visuales interactivos -->
+            <h3>Visual examples</h3>
+            <div class="image-grid">
+                <div class="image-card" onclick="openModal('workbookExample')">
+                    <img src="Imagenes/3087197a-62dd-47bf-9bcb-e77b5c8f4dd3.jpeg" alt="Ejemplo de libro de trabajo">
+                    <div class="image-card-content">
+                        <h3>Workbook</h3>
+                        <p>Excel file with multiple sheets</p>
+                    </div>
+                </div>
+                <div class="image-card" onclick="openModal('worksheetExample')">
+                    <img src="Imagenes/3708ec11-d3b1-4acd-8e3f-f5f91e9b6d34.jpeg" alt="Ejemplo de hoja de cálculo">
+                    <div class="image-card-content">
+                        <h3>Spreadsheet</h3>
+                        <p>Row and column structure</p>
+                    </div>
+                </div>
+                <div class="image-card" onclick="openModal('cellExample')">
+                    <img src="Imagenes/263c9b5f-5d40-4703-89b4-84ccab5b37d9.jpeg" alt="Ejemplo de celda">
+                    <div class="image-card-content">
+                        <h3>Cell</h3>
+                        <p>Selected cell with its address</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+    <div class="footer-container">
+        
+        <!-- Logo y descripción -->
+        <div class="footer-section">
+        <img src="Footer.png" alt="Safe Wave Logo" class="footer-logo">
+        <p>Connecting young people, creating unforgettable experiences and building the future, one click at a time.</p>
+        </div>
+
+        <!-- Enlaces rápidos -->
+        <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../about-us.html">About Us</a></li>
+            <li><a href="../Courses.html">Courses</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="../Contact.html">Contact</a></li>
+        </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Safewafe@gmail.com</p>
+        <p>+507 1234-5678</p>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="footer-section">
+        <h3>Follow us at</h3>
+        <div class="footer-socials">
+            <li><a href="#"><i class="fa-brands fa-facebook"></i>  Facebook </a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i>  Instagram</a></li>
+        <li><a href="#"><i class="fa-brands fa-whatsapp"></i>  WhatsApp</a></li>
+        </div>
+        </div>
+    </div>
+    
+    <!-- Modal para imágenes -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+           document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    if (!searchInput) return;
+    searchInput.addEventListener('keyup', function(e) {
+        const query = e.target.value.toLowerCase();
+        // Elimina resaltados anteriores
+        document.querySelectorAll('.highlight-search').forEach(el => {
+        el.outerHTML = el.innerText;
+        });
+        if (query.length > 1) {
+        // Busca en todos los textos de la página
+        const mainArea = document.querySelector('.container');
+        const walker = document.createTreeWalker(mainArea, NodeFilter.SHOW_TEXT, null, false);
+        while(walker.nextNode()) {
+            const node = walker.currentNode;
+            if (node.nodeValue.toLowerCase().includes(query)) {
+            const span = document.createElement('span');
+            span.className = 'highlight-search';
+            const idx = node.nodeValue.toLowerCase().indexOf(query);
+            const before = node.nodeValue.slice(0, idx);
+            const match = node.nodeValue.slice(idx, idx + query.length);
+            const after = node.nodeValue.slice(idx + query.length);
+            span.textContent = match;
+            const frag = document.createDocumentFragment();
+            if (before) frag.appendChild(document.createTextNode(before));
+            frag.appendChild(span);
+            if (after) frag.appendChild(document.createTextNode(after));
+            node.parentNode.replaceChild(frag, node);
+            }
+        }
+        }
+    });
+    });
+        // Funcionalidad para el modal de imágenes
+        function openModal(imageId) {
+            document.getElementById('imageModal').style.display = "block";
+            // En una implementación real, aquí cargaríamos la imagen correspondiente
+            document.getElementById('modalImage').src = "https://support.content.office.net/es-es/media/4f58c70b-35e6-4e0b-9c3f-6c65c954edec.png";
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+        }
+        
+        // Cerrar modal al hacer clic fuera de la imagen
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        // Funcionalidad para el comparador de imágenes
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('comparisonSlider');
+            const handle = document.getElementById('sliderHandle');
+            let isMoving = false;
+            
+            if (slider && handle) {
+                handle.addEventListener('mousedown', function() {
+                    isMoving = true;
+                });
+                
+                document.addEventListener('mouseup', function() {
+                    isMoving = false;
+                });
+                
+                document.addEventListener('mousemove', function(e) {
+                    if (!isMoving) return;
+                    
+                    const sliderRect = slider.getBoundingClientRect();
+                    let position = (e.clientX - sliderRect.left) / sliderRect.width;
+                    position = Math.max(0, Math.min(1, position));
+                    
+                    handle.style.left = (position * 100) + '%';
+                    slider.querySelector('div:first-child').style.right = (100 - position * 100) + '%';
+                    slider.querySelector('div:nth-child(2)').style.left = (position * 100) + '%';
+                });
+                
+                // Soporte para dispositivos táctiles
+                handle.addEventListener('touchstart', function() {
+                    isMoving = true;
+                });
+                
+                document.addEventListener('touchend', function() {
+                    isMoving = false;
+                });
+                
+                document.addEventListener('touchmove', function(e) {
+                    if (!isMoving) return;
+                    
+                    const sliderRect = slider.getBoundingClientRect();
+                    let position = (e.touches[0].clientX - sliderRect.left) / sliderRect.width;
+                    position = Math.max(0, Math.min(1, position));
+                    
+                    handle.style.left = (position * 100) + '%';
+                    slider.querySelector('div:first-child').style.right = (100 - position * 100) + '%';
+                    slider.querySelector('div:nth-child(2)').style.left = (position * 100) + '%';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

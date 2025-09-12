@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeWave - Excel Professional</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <script src="https://kit.fontawesome.com/a5dcd729dd.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --verde:#217346;
+            --verde-medio:#107C41;
+            --Verde-claro: #33C481;
+
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+            /* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: transparent;
+}
+
+header nav a {
+  position: relative;
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.3s;
+  padding-bottom: 4px;
+}
+
+header nav a:hover,
+header nav a.active {
+  color: #32cd32;
+}
+
+
+header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #32cd32;
+  transition: width 0.3s;
+}
+
+header nav a:hover::after,
+header nav a.active::after {
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo img {
+  width: 40px;
+  margin-right: 10px;
+}
+
+/* Menú de navegación */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  margin: 0 15px;
+  color: #ffffff; /* Usa blanco para mejor contraste */
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: #32cd32;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #32cd32;
+  transition: width 0.3s;
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  background-color: transparent;
+  border: 1.5px solid #333;
+  border-radius: 20px;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  color: rgb(0, 0, 0);
+  outline: none;
+  padding: 5px;
+}
+
+.user-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px; /* Reduce el espacio entre la barra y el icono */
+  background: transparent;
+  border: none;
+  font-size: 1.6em;
+  color: #32cd32;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.user-btn:hover {
+  color: #228b22;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Espacio pequeño entre barra y usuario */
+}
+
+     /*Resalto del texto*/
+
+    .highlight-search {
+      background: yellow;
+      color: black;
+      border-radius: 3px;
+      padding: 0 2px;
+    }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  background: linear-gradient(135deg, var(--verde), var(--Verde-claro));
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.page-header h2 {
+  font-size: 1.8rem;
+  color: var(--light-color);
+  font-weight: 300;
+}
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--verde);
+        }
+        
+        .module-content-preview {
+            padding: 1.5rem;
+            height: 100%;
+        }
+        
+        .module-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--Verde-claro);
+            margin-bottom: 0.5rem;
+        }
+        
+        .module-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--Verde-claro);
+        }
+        
+        .module-description {
+            color: #7f8c8d;
+            margin-bottom: 1.5rem;
+        }
+        
+        .view-details {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--verde-medio);
+            color: white;
+            text-decoration: none; /* Quita el subrayado */
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .view-details:hover {
+            background: var(--primary-color);
+        }
+        
+        /* Modal de pantalla completa */
+        .module-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .module-modal.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .modules-grid {
+  margin-bottom: 48px; /* O el valor que prefieras */
+}
+        
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            margin: 2rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .module-modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            position: relative;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .module-section {
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--secondary-color);
+            padding-left: 1rem;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-content {
+            color: #555;
+        }
+        
+        .section-content ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        .section-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .section-content li::before {
+            content: '•';
+            position: absolute;
+            left: -1rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .objective-box {
+            background-color: #e8f4fc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .objective-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* ===== FOOTER ===== */
+    .footer {
+      background-color: #0a1a2b;
+      color: white;
+      padding: 40px 20px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .footer-section {
+      flex: 1 1 250px;
+      margin: 10px;
+    }
+
+    .footer-logo {
+      width: 220px;
+    }
+
+    .footer h2 {
+      color: #7ed957;
+      margin-top: 10px;
+    }
+
+    .footer h3 {
+      color: #7ed957;
+      margin-bottom: 10px;
+    }
+
+    .footer-section p {
+      max-width: 260px;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links li {
+      margin: 6px 0;
+    }
+
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+      color: #7ed957;
+      cursor: pointer;
+    }
+
+    .footer-socials img {
+      width: 30px;
+      margin: 5px;
+      transition: transform 0.2s;
+    }
+
+    .footer-socials img:hover {
+      transform: scale(1.2);
+    }
+
+    .footer-line {
+      margin: 30px auto;
+      border-color: #2c3e50;
+      max-width: 90%;
+    }
+
+    .footer-copy {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .back-btn {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 8px 18px;
+  background: var(--Verde-claro);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.back-btn:hover {
+  background: var(--primary-color);
+}    
+        
+        @media (max-width: 768px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 0;
+                border-radius: 0;
+                min-height: 100vh;
+            }
+            
+            .modal-body {
+                max-height: none;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+  <div class="logo">
+    <img src="Logo.png" alt="SafeWave Logo" />
+    SafeWave
+  </div>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../about-us.html">About us</a>
+    <a href="Courses.html"  class="active">Courses</a>
+    <a href="#">Gallery</a>
+    <a href="../Contact.html">Contact</a>
+  </nav>
+  <div class="header-right">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Buscar..." />
+      🔍
+    </div>
+    <a href="L-R.html" class="user-btn" title="Registrarse">
+      <i class="fa-solid fa-user"></i>
+    </a>
+  </div>
+</header>
+    <div class="container">
+        <div class="page-header">
+    <h1>SafeWave</h1>
+    <h2>EXCEL PROFESSIONAL TRAINING</h2>
+
+    <a href="../Courses.html" class="back-btn">
+            ← Back to courses
+        </a>
+  </div>
+        
+        <div class="modules-grid">
+            <!-- Módulo 1 -->
+            <div class="module-card" onclick="openModal('module1')">
+                <div class="module-content-preview">
+                    <div class="module-number">MODULE 1</div>
+                    <h3 class="module-title">Introduction to Excel</h3>
+                    <p class="module-description">Basic concepts and fundamentals of spreadsheets.</p>
+                    <a href="modulo1.html" class="view-details">View details</a>
+                </div>
+            </div>
+            
+            <!-- Módulo 2 -->
+            <div class="module-card" onclick="openModal('module2')">
+                <div class="module-content-preview">
+                    <div class="module-number">MODULE 2</div>
+                    <h3 class="module-title">Excel Interface</h3>
+                    <p class="module-description">Master the interface and navigation techniques.</p>
+                    <a href="Modulo_SW2.html" class="view-details">View details</a>
+                </div>
+            </div>
+            
+            <!-- Módulo 3 -->
+            <div class="module-card" onclick="openModal('module3')">
+                <div class="module-content-preview">
+                    <div class="module-number">MODULE 3</div>
+                    <h3 class="module-title">Basic Formulas</h3>
+                    <p class="module-description">Learn how to use essential functions.</p>
+                    <a href="modulo3.html" class="view-details">View details</a>
+                </div>
+            </div>
+            
+            <!-- Módulo 4 -->
+            <div class="module-card" onclick="openModal('module4')">
+                <div class="module-content-preview">
+                    <div class="module-number">MODULE 4</div>
+                    <h3 class="module-title">Conditional Formatting</h3>
+                    <p class="module-description">Display data with advanced formatting.</p>
+                    <a href="Modulo_SW4.html" class="view-details">View details</a>
+                </div>
+            </div>
+            
+            <!-- Module 5 -->
+            <div class="module-card" onclick="openModal('module5')">
+                <div class="module-content-preview">
+                    <div class="module-number">MODULE 5</div>
+                    <h3 class="module-title">Graphs</h3>
+                    <p class="module-description">Create professional graphs.</p>
+                    <a href="Modulo_SW5.html" class="view-details">View details</a>
+                </div>
+            </div>
+            
+            <!-- Módulo 6 -->
+            <div class="module-card" onclick="openModal('module6')">
+                <div class="module-content-preview">
+                    <div class="module-number">MODULE 6</div>
+                    <h3 class="module-title">Pivot Tables</h3>
+                    <p class="module-description">Analyze large volumes of data.</p>
+                    <a href="Modulo_SW6.html" class="view-details">See details</a>
+                </div>
+            </div>
+            
+            <!-- Module 7 -->
+            <div class="module-card" onclick="openModal('module7')">
+                <div class="module-content-preview">
+                    <div class="module-number">MODULE 7</div>
+                    <h3 class="module-title">Advanced Functions</h3>
+                    <p class="module-description">Searches and conditional operations.</p>
+                    <a href=""# class="view-details">View details</a>
+                </div>
+            </div>
+            
+            <!-- Módulo 8 -->
+            <div class="module-card" onclick="openModal('module8')">
+                <div class="module-content-preview">
+                    <div class="module-number">MODULE 8</div>
+                    <h3 class="module-title">Automation</h3>
+                    <p class="module-description">Macros for repetitive tasks.</p>
+                    <a href=""# class="view-details">Show details</a>
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+    
+    <!-- Modales de pantalla completa -->
+    <!-- Módulo 1 -->
+    <div class="module-modal" id="module1-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <h3 class="modal-title">Módulo 1: Introducción a Excel</h3>
+                <p class="modal-subtitle">Conceptos básicos y fundamentos de las hojas de cálculo</p>
+            </div>
+            <div class="modal-body">
+                <div class="objective-box">
+                    <div class="objective-title">Objetivo General:</div>
+                    <div class="section-content">Capacitar a los estudiantes en el manejo técnico y estratégico de Microsoft Excel, desarrollando habilidades para organizar, analizar y presentar datos con precisión.</div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Definición y conceptos básicos</h4>
+                    <div class="section-content">
+                        <p>Una hoja de cálculo es una cuadrícula gigante llena de filas y columnas. Cada "casilla" se llama celda y puede contener números, textos o fórmulas que hacen cálculos automáticamente.</p>
+                        <p><strong>Evolución histórica:</strong></p>
+                        <ul>
+                            <li><strong>VisiCalc (1979):</strong> Primera hoja de cálculo digital</li>
+                            <li><strong>Lotus 1-2-3 (1983):</strong> Popular en los 80s</li>
+                            <li><strong>Excel (1985):</strong> Líder actual del mercado</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Casos de uso</h4>
+                    <div class="section-content">
+                        <p><strong>Excel se utiliza en diversos ámbitos:</strong></p>
+                        <ul>
+                            <li><strong>Académico:</strong> Organizar notas, planificar proyectos, registrar datos de experimentos</li>
+                            <li><strong>Financiero:</strong> Contabilidad, presupuestos, análisis de inversiones</li>
+                            <li><strong>Administrativo:</strong> Listas de empleados, control de inventario, informes</li>
+                            <li><strong>Personal:</strong> Control de gastos, planificación de viajes, listas de compras</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Ventajas de Excel</h4>
+                    <div class="section-content">
+                        <ul>
+                            <li><strong>Automatización de cálculos:</strong> Las fórmulas se actualizan automáticamente</li>
+                            <li><strong>Organización clara:</strong> Datos estructurados en filas y columnas</li>
+                            <li><strong>Análisis de datos:</strong> Filtrado, ordenamiento y búsqueda rápida</li>
+                            <li><strong>Visualización:</strong> Creación de gráficos profesionales</li>
+                            <li><strong>Flexibilidad:</strong> Adaptable a múltiples necesidades</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Módulo 2 -->
+    <div class="module-modal" id="module2-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <h3 class="modal-title">Módulo 2: Interfaz de Excel</h3>
+                <p class="modal-subtitle">Domina la interfaz y técnicas de navegación</p>
+            </div>
+            <div class="modal-body">
+                <div class="objective-box">
+                    <div class="objective-title">Objetivo:</div>
+                    <div class="section-content">Explorar la estructura de Excel (celdas, filas y columnas) y aprender a navegar, seleccionar e ingresar información de manera eficiente.</div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Estructura básica</h4>
+                    <div class="section-content">
+                        <ul>
+                            <li><strong>Columnas:</strong> Identificadas con letras (A, B, C... AA, AB, etc.)</li>
+                            <li><strong>Filas:</strong> Identificadas con números (1, 2, 3... hasta 1,048,576)</li>
+                            <li><strong>Celdas:</strong> Intersección de filas y columnas (ej. A1, B5)</li>
+                            <li><strong>Hojas:</strong> Cada pestaña en la parte inferior (Hoja1, Hoja2...)</li>
+                            <li><strong>Libro:</strong> Archivo completo que contiene las hojas (.xlsx)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Navegación eficiente</h4>
+                    <div class="section-content">
+                        <p><strong>Atajos de teclado esenciales:</strong></p>
+                        <ul>
+                            <li><strong>Flechas:</strong> Movimiento básico entre celdas</li>
+                            <li><strong>Ctrl + Flechas:</strong> Saltar al extremo de los datos</li>
+                            <li><strong>Ctrl + G:</strong> Ir a celda específica (ej. AZ5000)</li>
+                            <li><strong>Enter:</strong> Confirmar entrada y bajar a la siguiente celda</li>
+                            <li><strong>Tab:</strong> Confirmar entrada y mover a la derecha</li>
+                            <li><strong>F2:</strong> Editar celda activa</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Ingreso y edición de datos</h4>
+                    <div class="section-content">
+                        <p><strong>Tipos de datos:</strong></p>
+                        <ul>
+                            <li><strong>Texto:</strong> Nombres, descripciones (alineado a izquierda)</li>
+                            <li><strong>Números:</strong> Cantidades, precios (alineado a derecha)</li>
+                            <li><strong>Fechas/Horas:</strong> Formatos especiales (25/06/2023, 10:30 AM)</li>
+                            <li><strong>Fórmulas:</strong> Siempre comienzan con =</li>
+                        </ul>
+                        <p><strong>Para editar:</strong> Doble clic en celda o presionar F2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Módulo 3 -->
+    <div class="module-modal" id="module3-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <h3 class="modal-title">Módulo 3: Fórmulas Básicas</h3>
+                <p class="modal-subtitle">Aprende a usar las funciones esenciales</p>
+            </div>
+            <div class="modal-body">
+                <div class="objective-box">
+                    <div class="objective-title">Objetivo:</div>
+                    <div class="section-content">Aplicar funciones básicas para realizar cálculos automáticos que agilicen el trabajo y reduzcan errores.</div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Introducción a fórmulas</h4>
+                    <div class="section-content">
+                        <p>Todas las fórmulas en Excel comienzan con el signo <strong>=</strong></p>
+                        <p><strong>Operadores básicos:</strong></p>
+                        <ul>
+                            <li><strong>+</strong> (Suma): =A1+B1</li>
+                            <li><strong>-</strong> (Resta): =A1-B1</li>
+                            <li><strong>*</strong> (Multiplicación): =A1*B1</li>
+                            <li><strong>/</strong> (División): =A1/B1</li>
+                            <li><strong>^</strong> (Exponenciación): =A1^2</li>
+                        </ul>
+                        <p><strong>Ejemplo:</strong> =A1+B1*C1 (primero multiplica, luego suma)</p>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Referencias de celdas</h4>
+                    <div class="section-content">
+                        <ul>
+                            <li><strong>Relativas:</strong> Se ajustan al copiar (ej. A1)</li>
+                            <li><strong>Absolutas ($A$1):</strong> Fijas al copiar (para constantes)</li>
+                            <li><strong>Mixtas (A$1 o $A1):</strong> Fija solo fila o columna</li>
+                        </ul>
+                        <p><strong>Ejemplo práctico:</strong></p>
+                        <p>=B2*$C$1 (al copiar, B2 cambiará pero $C$1 permanecerá igual)</p>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Funciones básicas</h4>
+                    <div class="section-content">
+                        <ul>
+                            <li><strong>SUMA:</strong> =SUMA(A1:A10) - Suma un rango de celdas</li>
+                            <li><strong>PROMEDIO:</strong> =PROMEDIO(B2:B20) - Calcula la media</li>
+                            <li><strong>CONTAR:</strong> =CONTAR(C1:C100) - Cuenta celdas con números</li>
+                            <li><strong>MÁX:</strong> =MÁX(D2:D50) - Valor más alto</li>
+                            <li><strong>MÍN:</strong> =MÍN(E2:E50) - Valor más bajo</li>
+                        </ul>
+                        <p><strong>Autosuma:</strong> Botón Σ en la pestaña Inicio para sumar rápidamente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Módulo 4 -->
+    <div class="module-modal" id="module4-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <h3 class="modal-title">Módulo 4: Formato Condicional</h3>
+                <p class="modal-subtitle">Visualiza datos con formatos avanzados</p>
+            </div>
+            <div class="modal-body">
+                <div class="objective-box">
+                    <div class="objective-title">Objetivo:</div>
+                    <div class="section-content">Utilizar herramientas para resaltar automáticamente ciertos valores según condiciones específicas.</div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Tipos de formato condicional</h4>
+                    <div class="section-content">
+                        <ul>
+                            <li><strong>Reglas de resaltado:</strong> Colorear celdas según valores (ej. >100 en verde)</li>
+                            <li><strong>Barras de datos:</strong> Barras horizontales proporcionales al valor</li>
+                            <li><strong>Escalas de color:</strong> Degradados (ej. verde-amarillo-rojo)</li>
+                            <li><strong>Conjuntos de iconos:</strong> Semáforos, flechas, símbolos de estado</li>
+                        </ul>
+                        <p><strong>Ubicación:</strong> Pestaña Inicio > Formato condicional</p>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Validación de datos</h4>
+                    <div class="section-content">
+                        <p>Restringe el tipo de datos que se pueden ingresar en una celda:</p>
+                        <ul>
+                            <li><strong>Números:</strong> Enteros/decimales dentro de un rango</li>
+                            <li><strong>Listas:</strong> Menú desplegable con opciones</li>
+                            <li><strong>Fechas:</strong> Dentro de un período específico</li>
+                            <li><strong>Textos:</strong> Con longitud determinada</li>
+                        </ul>
+                        <p><strong>Ubicación:</strong> Pestaña Datos > Validación de datos</p>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Mensajes personalizados</h4>
+                    <div class="section-content">
+                        <p><strong>Mensaje de entrada:</strong> Aparece al seleccionar la celda</p>
+                        <p><strong>Mensaje de error:</strong> Aparece si se ingresa dato inválido</p>
+                        <p><strong>Ejemplo:</strong> "Ingrese solo números entre 1 y 100"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Módulo 5 -->
+    <div class="module-modal" id="module5-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <h3 class="modal-title">Módulo 5: Gráficos</h3>
+                <p class="modal-subtitle">Crea gráficos profesionales</p>
+            </div>
+            <div class="modal-body">
+                <div class="objective-box">
+                    <div class="objective-title">Objetivo:</div>
+                    <div class="section-content">Crear gráficos profesionales que permitan visualizar datos de forma clara y atractiva.</div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Tipos de gráficos</h4>
+                    <div class="section-content">
+                        <p><strong>Principales tipos y cuándo usarlos:</strong></p>
+                        <ul>
+                            <li><strong>Columnas/Barras:</strong> Comparar valores entre categorías</li>
+                            <li><strong>Líneas:</strong> Mostrar tendencias en el tiempo</li>
+                            <li><strong>Circular:</strong> Proporciones de un todo (máx. 5 categorías)</li>
+                            <li><strong>Dispersión (XY):</strong> Relación entre dos variables</li>
+                            <li><strong>Áreas:</strong> Mostrar cambios acumulativos</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Creación de gráficos</h4>
+                    <div class="section-content">
+                        <p><strong>Pasos básicos:</strong></p>
+                        <ol>
+                            <li>Seleccionar los datos (incluyendo encabezados)</li>
+                            <li>Ir a pestaña Insertar > Gráficos</li>
+                            <li>Elegir el tipo de gráfico adecuado</li>
+                            <li>Personalizar diseño y formato</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Elementos y personalización</h4>
+                    <div class="section-content">
+                        <p><strong>Elementos clave:</strong></p>
+                        <ul>
+                            <li>Título del gráfico (claro y descriptivo)</li>
+                            <li>Ejes con etiquetas y unidades</li>
+                            <li>Leyenda (ubicación clara)</li>
+                            <li>Etiquetas de datos (opcional)</li>
+                            <li>Líneas de cuadrícula (para mejor lectura)</li>
+                        </ul>
+                        <p><strong>Diseño:</strong> Usar colores coherentes y evitar sobrecargar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Módulo 6 -->
+    <div class="module-modal" id="module6-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <h3 class="modal-title">Módulo 6: Tablas Dinámicas</h3>
+                <p class="modal-subtitle">Analiza grandes volúmenes de datos</p>
+            </div>
+            <div class="modal-body">
+                <div class="objective-box">
+                    <div class="objective-title">Objetivo:</div>
+                    <div class="section-content">Aprender a resumir y reorganizar grandes volúmenes de datos mediante tablas dinámicas.</div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Preparación de datos</h4>
+                    <div class="section-content">
+                        <p><strong>Requisitos para datos fuente:</strong></p>
+                        <ul>
+                            <li>Encabezados claros en cada columna</li>
+                            <li>Sin filas o columnas completamente vacías</li>
+                            <li>Datos consistentes (mismo formato en cada columna)</li>
+                            <li>Preferible convertir a Tabla Excel (Ctrl+T)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Creación de tablas dinámicas</h4>
+                    <div class="section-content">
+                        <p><strong>Pasos básicos:</strong></p>
+                        <ol>
+                            <li>Seleccionar los datos (incluyendo encabezados)</li>
+                            <li>Ir a pestaña Insertar > Tabla dinámica</li>
+                            <li>Definir ubicación (nueva hoja recomendado)</li>
+                            <li>Arrastrar campos a las áreas:
+                                <ul>
+                                    <li><strong>FILAS:</strong> Lo que quieres agrupar (ej. Productos)</li>
+                                    <li><strong>COLUMNAS:</strong> Subcategorías (ej. Meses)</li>
+                                    <li><strong>VALORES:</strong> Datos a calcular (ej. Suma de Ventas)</li>
+                                    <li><strong>FILTROS:</strong> Para filtrar datos globalmente</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Funcionalidades avanzadas</h4>
+                    <div class="section-content">
+                        <ul>
+                            <li><strong>Agrupación:</strong> Agrupar fechas por meses/trimestres</li>
+                            <li><strong>Cálculos:</strong> Mostrar valores como % del total</li>
+                            <li><strong>Ordenamiento:</strong> Ordenar por valores o etiquetas</li>
+                            <li><strong>Filtros:</strong> Segmentación de datos para filtrado visual</li>
+                            <li><strong>Actualización:</strong> Actualizar datos con nuevos registros</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Módulo 7 -->
+    <div class="module-modal" id="module7-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <h3 class="modal-title">Módulo 7: Funciones Avanzadas</h3>
+                <p class="modal-subtitle">Búsquedas y operaciones condicionales</p>
+            </div>
+            <div class="modal-body">
+                <div class="objective-box">
+                    <div class="objective-title">Objetivo:</div>
+                    <div class="section-content">Incorporar funciones complejas para búsquedas, operaciones condicionales y manejo de texto.</div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Función SI</h4>
+                    <div class="section-content">
+                        <p><strong>Sintaxis básica:</strong></p>
+                        <p>=SI(condición, valor_si_verdadero, valor_si_falso)</p>
+                        <p><strong>Ejemplos:</strong></p>
+                        <ul>
+                            <li>=SI(A2>=60, "Aprobado", "Reprobado")</li>
+                            <li>=SI(B2>100, B2*0.9, B2) (aplicar descuento si >100)</li>
+                        </ul>
+                        <p><strong>SI anidado:</strong></p>
+                        <p>=SI(A2>=90, "Excelente", SI(A2>=70, "Bueno", "Regular"))</p>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Funciones de búsqueda</h4>
+                    <div class="section-content">
+                        <p><strong>BUSCARV (Vertical):</strong></p>
+                        <p>=BUSCARV(valor_buscado, rango, columna, FALSO)</p>
+                        <p><strong>Ejemplo:</strong> =BUSCARV("Juan", A2:B10, 2, FALSO)</p>
+                        
+                        <p><strong>BUSCARH (Horizontal):</strong></p>
+                        <p>=BUSCARH(valor_buscado, rango, fila, FALSO)</p>
+                        
+                        <p><strong>INDICE + COINCIDIR (más flexible):</strong></p>
+                        <p>=INDICE(rango_resultados, COINCIDIR(valor_buscado, rango_busqueda, 0))</p>
+                    </div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">Funciones de texto</h4>
+                    <div class="section-content">
+                        <ul>
+                            <li><strong>CONCATENAR:</strong> Unir textos (=CONCATENAR(A2," ",B2))</li>
+                            <li><strong>IZQUIERDA/DERECHA:</strong> Extraer desde extremos (=IZQUIERDA(A2,4))</li>
+                            <li><strong>EXTRAE:</strong> Extraer parte del texto (=EXTRAE(A2,3,5))</li>
+                            <li><strong>LARGO:</strong> Longitud del texto (=LARGO(A2))</li>
+                            <li><strong>ENCONTRAR:</strong> Posición de un texto (=ENCONTRAR("@",A2))</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Módulo 8 -->
+    <div class="module-modal" id="module8-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <h3 class="modal-title">Módulo 8: Automatización</h3>
+                <p class="modal-subtitle">Macros para tareas repetitivas</p>
+            </div>
+            <div class="modal-body">
+                <div class="objective-box">
+                    <div class="objective-title">Objetivo:</div>
+                    <div class="section-content">Explorar el uso de macros para grabar y ejecutar tareas repetitivas.</div>
+                </div>
+                
+                <div class="module-section">
+                    <h4 class="section-title">¿Qué es una macro?</h4>
+                    <div class="section-content">
+                        <p>Una macro es una serie de comandos e instrucciones que se agrupan como un solo comando para lograr una tarea automáticamente.</p>
+                        <p><strong>Ventajas:</strong></p>
+                        <ul>
+                            <li>Ahorra tiempo en tareas repetitivas</li>
+                            <li>Reduce errores humanos</li>
+                            <li>Automatiza procesos complejos</li>
+                        </ul>
+                    </div>
+                </div>  
+
+                <div class="module-section">
+                    <h4 class="section-title">Grabación de macros</h4>
+                    <div class="section-content">
+                        <p><strong>Pasos para grabar:</strong></p>
+                        <ol>
+                            <li>Ir a pestaña Vista > Macros > Grabar macro</li>
+                            <li>Asignar nombre (sin espacios) y, opcionalmente, un atajo de teclado</li>
+                            <li>Realizar las acciones que deseas automatizar</li>
+                            <li>Detener grabación (Vista > Macros > Detener grabación)</li>
+                        </ol>
+                    </div>
+
+                </div>  
+                <div class="module-section">
+                    <h4 class="section-title">Ejecución y gestión de macros</h4>
+                    <div class="section-content">
+                        <p><strong>Ejecutar macro:</strong></p>
+                        <ul>
+                            <li>Vista > Macros > Ver macros > Seleccionar macro > Ejecutar</li>
+                            <li>O usar el atajo de teclado asignado</li>
+                        </ul>
+                        <p><strong>Gestión:</strong></p>
+                        <ul>
+                            <li>Editar o eliminar macros desde el editor VBA (Alt + F11)</li>
+                            <li>Guardar el archivo como .xlsm (Libro habilitado para macros)</li>
+                        </ul>
+                    </div>  
+                </div>  
+            </div>
+        </div>
+    </div>
+              <footer class="footer">
+  <div class="footer-container">
+    
+    <!-- Logo y descripción -->
+    <div class="footer-section">
+      <img src="Footer.png" alt="Safe Wave Logo" class="footer-logo">
+      <p>Connecting young people, creating unforgettable experiences and building the future, one click at a time.</p>
+    </div>
+
+    <!-- Enlaces rápidos -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about-us.html">About Us</a></li>
+        <li><a href="../Courses.html">Courses</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="../Contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contacto -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Safewafe@gmail.com</p>
+      <p>+507 1234-5678</p>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="footer-section">
+      <h3>Follow us at</h3>
+      <div class="footer-socials">
+        <li><a href="#"><i class="fa-brands fa-facebook"></i>  Facebook </a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i>  Instagram</a></li>
+        <li><a href="#"><i class="fa-brands fa-whatsapp"></i>  WhatsApp</a></li>
+      </div>
+    </div>
+  </div>
+
+  <!-- Línea divisoria y derechos -->
+  <hr class="footer-line">
+  <p class="footer-copy">© 2025 Safe Wave. All rights reserved. - Made with love for youth.</p>
+</footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    if (!searchInput) return;
+    searchInput.addEventListener('keyup', function(e) {
+        const query = e.target.value.toLowerCase();
+        // Elimina resaltados anteriores
+        document.querySelectorAll('.highlight-search').forEach(el => {
+        el.outerHTML = el.innerText;
+        });
+        if (query.length > 1) {
+        // Busca en todos los textos de la página
+        const mainArea = document.querySelector('.container');
+        const walker = document.createTreeWalker(mainArea, NodeFilter.SHOW_TEXT, null, false);
+        while(walker.nextNode()) {
+            const node = walker.currentNode;
+            if (node.nodeValue.toLowerCase().includes(query)) {
+            const span = document.createElement('span');
+            span.className = 'highlight-search';
+            const idx = node.nodeValue.toLowerCase().indexOf(query);
+            const before = node.nodeValue.slice(0, idx);
+            const match = node.nodeValue.slice(idx, idx + query.length);
+            const after = node.nodeValue.slice(idx + query.length);
+            span.textContent = match;
+            const frag = document.createDocumentFragment();
+            if (before) frag.appendChild(document.createTextNode(before));
+            frag.appendChild(span);
+            if (after) frag.appendChild(document.createTextNode(after));
+            node.parentNode.replaceChild(frag, node);
+            }
+        }
+        }
+    });
+    });
+    </script>
+</body>
+</html>
