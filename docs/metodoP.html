@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="css/style_pago.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="logo">
+      <img src="Imagenes/Logo.png" alt="SafeWave Logo" />
+      SafeWave
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about-us.html">About us</a>
+      <a href="Courses.html">Courses</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Buscar..." /> 🔍
+      </div>
+      <a href="L-R.html" class="user-btn" title="Registrarse">
+        <i class="fa-solid fa-user"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section class="hero-payment">
+    <h1>Complete Your Purchase</h1>
+    <p class="hero-subtitle">
+      Choose your plan and secure payment method to start your learning journey
+    </p>
+  </section>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <div class="payment-container">
+    <div class="payment-layout">
+
+      <!-- ========== PLAN SELECTOR ========== -->
+      <div class="plan-selector">
+        <h2>Choose Your Plan</h2>
+
+        <div class="plan-option" data-plan="basic" data-price="0">
+          <input type="radio" name="plan" value="basic" class="radio-input" id="basic-plan">
+          <div class="radio-custom"></div>
+          <div class="plan-header">
+            <div class="plan-name">Basic Plan</div>
+            <div class="plan-price"><span class="free">$0.00 / Free     </span></div>
+          </div>
+          <ul class="plan-features">
+            <li>Sample Lessons</li>
+            <li>Basic Material & Challenges</li>
+            <li>Free Certification Course Demo</li>
+            <li>Community Access</li>
+          </ul>
+        </div>
+
+        <div class="plan-option selected" data-plan="premium" data-price="4.99">
+          <input type="radio" name="plan" value="premium" class="radio-input" id="premium-plan" checked>
+          <div class="radio-custom"></div>
+          <div class="plan-header">
+            <div class="plan-name">Premium Plan</div>
+            <div class="plan-price">$4.99 <small>/month</small></div>
+          </div>
+          <ul class="plan-features">
+            <li>Discounts on Specialized Events</li>
+            <li>Digital Security Certification</li>
+            <li>Digital Humanization Resources</li>
+            <li>Personal Security Modules</li>
+            <li>VIP Pass Line Personal</li>
+            <li>Practical Projects</li>
+          </ul>
+        </div>
+
+        <div class="plan-option" data-plan="corporate" data-price="9.99">
+          <input type="radio" name="plan" value="corporate" class="radio-input" id="corporate-plan">
+          <div class="radio-custom"></div>
+          <div class="plan-header">
+            <div class="plan-name">Corporate Plan</div>
+            <div class="plan-price">$9.99 <small>/month</small></div>
+          </div>
+          <ul class="plan-features">
+            <li>Small Business Security Modules</li>
+            <li>Group Mentorship</li>
+            <li>VIP Pass Line Corporate</li>
+            <li>Certification Course Demo</li>
+            <li>Digital Humanization Consultations</li>
+            <li>Priority Support</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ========== PAYMENT FORM ========== -->
+      <div class="payment-form">
+        <h2>Payment Details</h2>
+
+        <!-- Payment Methods -->
+        <div class="payment-methods">
+          <div class="payment-method active" data-method="card">
+            <i class="fa-solid fa-credit-card"></i>
+            <span>Card</span>
+          </div>
+          <div class="payment-method" data-method="paypal">
+            <i class="fa-brands fa-paypal"></i>
+            <span>PayPal</span>
+          </div>
+          <div class="payment-method" data-method="crypto">
+            <i class="fa-brands fa-bitcoin"></i>
+            <span>Crypto</span>
+          </div>
+        </div>
+
+        <form id="paymentForm">
+          <!-- Order Summary -->
+          <div class="order-summary">
+            <h3>Order Summary</h3>
+            <div class="summary-row">
+              <span>Plan:</span>
+              <span id="selected-plan-name">Premium Plan</span>
+            </div>
+            <div class="summary-row">
+              <span>Billing:</span>
+              <span>Monthly</span>
+            </div>
+            <div class="summary-row">
+              <span>Subtotal:</span>
+              <span id="subtotal">$4.99</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax (8%):</span>
+              <span id="tax">$0.40</span>
+            </div>
+            <div class="summary-row total">
+              <span>Total:</span>
+              <span id="total">$5.39</span>
+            </div>
+          </div>
+
+          <!-- Card Payment Form -->
+          <div id="card-form" class="payment-form-section">
+            <div class="form-section">
+              <h3>Card Information</h3>
+              <div class="form-group">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="expiry">Expiry Date</label>
+                  <input type="text" id="expiry" placeholder="MM/YY" maxlength="5">
+                </div>
+                <div class="form-group">
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" placeholder="123" maxlength="4">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Billing Information</h3>
+              <div class="form-group">
+                <label for="full-name">Full Name</label>
+                <input type="text" id="full-name" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="john@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country">
+                  <option value="PA">Panama</option>
+                  <option value="US">United States</option>
+                  <option value="MX">Mexico</option>
+                  <option value="CO">Colombia</option>
+                  <option value="CR">Costa Rica</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- PayPal Form -->
+          <div id="paypal-form" class="payment-form-section" style="display: none;">
+            <div class="form-section">
+              <h3>PayPal Payment</h3>
+              <p style="color: #c7d8f7; margin-bottom: 20px;">
+                You will be redirected to PayPal to complete your payment securely.
+              </p>
+              <div class="form-group">
+                <label for="paypal-email">PayPal Email</label>
+                <input type="email" id="paypal-email" placeholder="your-paypal@email.com">
+              </div>
+            </div>
+          </div>
+
+          <!-- Crypto Form -->
+          <div id="crypto-form" class="payment-form-section" style="display: none;">
+            <div class="form-section">
+              <h3>Cryptocurrency Payment</h3>
+              <p style="color: #c7d8f7; margin-bottom: 20px;">
+                Pay with Bitcoin, Ethereum, or other supported cryptocurrencies.
+              </p>
+              <div class="form-group">
+                <label for="crypto-type">Select Cryptocurrency</label>
+                <select id="crypto-type">
+                  <option value="BTC">Bitcoin (BTC)</option>
+                  <option value="ETH">Ethereum (ETH)</option>
+                  <option value="LTC">Litecoin (LTC)</option>
+                  <option value="BCH">Bitcoin Cash (BCH)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submit-payment">
+            <i class="fa-solid fa-lock" style="margin-right: 10px;"></i>
+            Complete Payment
+          </button>
+
+          <div class="security-badges">
+            <div class="security-badge">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>SSL Secured</span>
+            </div>
+            <div class="security-badge">
+              <i class="fa-solid fa-lock"></i>
+              <span>256-bit Encryption</span>
+            </div>
+            <div class="security-badge">
+              <i class="fa-solid fa-certificate"></i>
+              <span>PCI Compliant</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <!-- Logo y descripción -->
+      <div class="footer-section">
+        <img src="Imagenes/Footer.png" alt="Safe Wave Logo" class="footer-logo">
+        <p>
+          Connecting young people, creating unforgettable experiences and building the future, one click at a time.
+        </p>
+      </div>
+
+      <!-- Enlaces rápidos -->
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="Courses.html">Courses</a></li>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Safewafe@gmail.com</p>
+        <p>+507 1234-5678</p>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="footer-section">
+        <h3>Follow us at</h3>
+        <div class="footer-socials">
+          <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook </a></li>
+          <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+        </div>
+      </div>
+    </div>
+
+    <!-- Línea divisoria y derechos -->
+    <hr class="footer-line">
+    <p class="footer-copy">
+      © 2025 Safe Wave. All rights reserved. - Made with love for youth.
+    </p>
+  </footer>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="js/stripe-pyment.js"></script>
+<script src="js/script_pago.js"></script>
+</body>
+</html>
