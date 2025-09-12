@@ -1,8 +1,0 @@
-# Ignorar archivo con claves privadas
-.env
-
-# Ignorar dependencias
-node_modules/
-
-# Archivos de logs
-*.log
