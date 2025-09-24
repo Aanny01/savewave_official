@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 2 Contraseñas Seguras | Safewave</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .topic-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .topic-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .topic-header h3 {
+            font-size: 1.8rem;
+        }
+        
+        .topic-content {
+            padding: 30px;
+        }
+        
+        .highlight-box {
+            background-color: #e3f2fd;
+            border-left: 5px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .subtopic {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .subtopic:last-child {
+            border-bottom: none;
+        }
+        
+        h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h4 i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        p, ul {
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .example-box {
+            background-color: #fff8e1;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .activity-box {
+            background-color: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .nav-button, .return-button {
+            padding: 12px 25px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .return-button {
+            background-color: var(--primary-color);
+        }
+        
+        .nav-button:hover, .return-button:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+        }
+        
+        .nav-button i, .return-button i {
+            margin: 0 5px;
+        }
+        
+        /* Estilos para elementos interactivos */
+        .interactive-section {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .interactive-title {
+            display: flex;
+            align-items: center;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        .interactive-title i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .password-visual {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .password-strength {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .strength-bar {
+            height: 10px;
+            flex-grow: 1;
+            margin: 0 10px;
+            border-radius: 5px;
+            background-color: #ddd;
+        }
+        
+        .strength-label {
+            font-weight: bold;
+            min-width: 100px;
+        }
+        
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .info-image {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background-color: #f2f2f2;
+            color: var(--primary-color);
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .quiz-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        
+        .quiz-question {
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .quiz-options {
+            margin-bottom: 15px;
+        }
+        
+        .quiz-option {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .quiz-option:hover {
+            background-color: #e9ecef;
+        }
+        
+        .quiz-feedback {
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .btn {
+            padding: 10px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .tool-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        
+        .tool-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .tool-result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            .topic-header h3 {
+                font-size: 1.4rem;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-button, .return-button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Safewave</h1>
+    <h2>DIGITAL SECURITY - PERSONAL</h2>
+    
+    <div class="topic-container">
+        <div class="topic-header">
+            <h3>MÓDULO 2 - Contraseñas Seguras y Autenticación</h3>
+        </div>
+        
+        <div class="topic-content">
+            <div class="highlight-box">
+                <p><strong>Objetivo:</strong> Aplicar buenas prácticas para la creación y gestión de contraseñas robustas, y conocer herramientas de autenticación de dos factores para reforzar el acceso seguro a plataformas digitales.</p>
+            </div>
+            
+            <div class="subtopic">
+                <h4><i class="fas fa-key"></i> Características de una contraseña fuerte</h4>
+                <p>Una contraseña fuerte es esencial para proteger la información personal y evitar accesos no autorizados. Cuanto más compleja y larga sea una contraseña, más difícil será para los atacantes descifrarla mediante técnicas como el "fuerza bruta" o los diccionarios automatizados.</p>
+                
+                <div class="image-container">
+                    <img src="imagenes/consejos_seguridad.png" alt="Seguridad de contraseñas" class="info-image" style="max-height: 300px;">
+                </div>
+                
+                <p>Una contraseña segura debe cumplir con los siguientes criterios:</p>
+                <ul>
+                    <li><strong>Longitud:</strong> Idealmente, de 12 caracteres o más.</li>
+                    <li><strong>Variedad de caracteres:</strong> Incluir letras mayúsculas, minúsculas, números y símbolos especiales.</li>
+                    <li><strong>Evitar patrones predecibles:</strong> No usar secuencias como "123456", "abcdef" o combinaciones como "qwerty".</li>
+                    <li><strong>No usar información personal:</strong> Fechas de nacimiento, nombres, apodos, número de cédula, etc., deben evitarse.</li>
+                </ul>
+                
+                <div class="interactive-section">
+                    <div class="interactive-title">
+                        <i class="fas fa-balance-scale"></i>
+                        <h4>Comparación de Contraseñas</h4>
+                    </div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Contraseña Débil</th>
+                            <th>Problema</th>
+                            <th>Contraseña Fuerte</th>
+                            <th>Ventaja</th>
+                        </tr>
+                        <tr>
+                            <td>juan123</td>
+                            <td>Demasiado corta, sin caracteres especiales</td>
+                            <td>J@n2024$EgU#</td>
+                            <td>Longitud adecuada, múltiples tipos de caracteres</td>
+                        </tr>
+                        <tr>
+                            <td>password</td>
+                            <td>Muy común y predecible</td>
+                            <td>P@$sW0rD_$3gUr4</td>
+                            <td>Variación de caracteres, no es la palabra literal</td>
+                        </tr>
+                        <tr>
+                            <td>01011990</td>
+                            <td>Fecha personal fácil de adivinar</td>
+                            <td>90$EnEro!PrimerDia</td>
+                            <td>Transformación de fecha con caracteres especiales</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="example-box">
+                    <p><strong>Ejemplo de contraseña insegura:</strong> Ana2008</p>
+                    <p><strong>Ejemplo de contraseña segura:</strong> bL7lp$9kMv#4qR</p>
+                </div>
+                
+                <div class="password-visual">
+                    <div style="text-align: center;">
+                        <p><strong>Visualización de fortaleza de contraseñas:</strong></p>
+                        <div style="display: flex; align-items: center; justify-content: center; margin: 15px 0;">
+                            <div style="width: 100px; height: 10px; background-color: #ff4d4d; border-radius: 5px; margin: 0 10px;"></div>
+                            <span>Débil</span>
+                            <div style="width: 100px; height: 10px; background-color: #ffa64d; border-radius: 5px; margin: 0 10px;"></div>
+                            <span>Media</span>
+                            <div style="width: 100px; height: 10px; background-color: #2ecc71; border-radius: 5px; margin: 0 10px;"></div>
+                            <span>Fuerte</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>Una contraseña segura actúa como una cerradura fuerte para nuestras cuentas digitales.</p>
+            </div>
+            
+            <div class="subtopic">
+                <h4><i class="fas fa-exclamation-triangle"></i> Errores comunes al crear contraseñas</h4>
+                <p>Muchas brechas de seguridad no ocurren por fallas técnicas, sino por errores humanos en la gestión de contraseñas.</p>
+                
+                <div class="image-container">
+                    <img src="imagenes/contrasena_shutterstock_2175602985.webp" alt="Errores comunes con contraseñas" class="info-image" style="max-height: 300px;">
+                </div>
+                
+                <p>Algunos de los errores más frecuentes son:</p>
+                <ul>
+                    <li><strong>Usar contraseñas cortas o simples.</strong> Ejemplo: "1234", "password", "hola123".</li>
+                    <li><strong>Repetir la misma contraseña en múltiples cuentas.</strong> Si una plataforma se ve comprometida, todas las cuentas con esa misma clave quedan en riesgo.</li>
+                    <li><strong>Utilizar datos personales evidentes.</strong> Como nombres de mascotas, fechas importantes, o apodos conocidos. Estas contraseñas son fáciles de adivinar para alguien que te conoce o investiga tu perfil en redes sociales.</li>
+                    <li><strong>Almacenar contraseñas en lugares inseguros.</strong> Como notas del celular, documentos sin protección o mensajes de chat. Es importante evitar dejar contraseñas expuestas.</li>
+                </ul>
+                
+                <div class="interactive-section">
+                    <div class="interactive-title">
+                        <i class="fas fa-brain"></i>
+                        <h4>Test de Conocimiento: ¿Puedes identificar el error?</h4>
+                    </div>
+                    <div class="quiz-container">
+                        <div class="quiz-question">¿Cuál de estas contraseñas es la más vulnerable?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="checkAnswer(this, 'correct')">a) nombreyfechadenacimiento</div>
+                            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">b) M1_Cu3nt4_$3cr3t4</div>
+                            <div class="quiz-option" onclick="checkAnswer(this, 'incorrect')">c) Xy8#pQ2$rT9@wZ1*</div>
+                        </div>
+                        <div class="quiz-feedback correct">¡Correcto! Usar tu nombre y fecha de nacimiento hace que la contraseña sea muy fácil de adivinar para alguien que te conoce o investiga sobre ti.</div>
+                        <div class="quiz-feedback incorrect">Incorrecto. La opción más vulnerable es "nombreyfechadenacimiento" porque utiliza información personal fácil de obtener.</div>
+                    </div>
+                </div>
+                
+                <p>Estos errores facilitan que las personas malintencionadas accedan a cuentas privadas sin necesidad de conocimientos avanzados en tecnología.</p>
+            </div>
+            
+            <div class="subtopic">
+                <h4><i class="fas fa-ban"></i> La importancia de no reutilizar contraseñas</h4>
+                <p>Cuando un usuario reutiliza la misma contraseña en varias plataformas, cualquier filtración en una de ellas puede comprometer el resto. Este fenómeno es conocido como "efecto dominó".</p>
+                
+                <div class="image-container">
+                    <img src="imagenes/cybersecurity-concept-set-secure-passwords-260nw-2357755509.webp" alt="Efecto dominó en contraseñas" class="info-image" style="max-height: 300px;">
+                </div>
+                
+                <div class="example-box">
+                    <p><strong>Ejemplo práctico:</strong> Si usas la misma contraseña para tu correo, tu red social y tu banco, y tu cuenta de correo es hackeada, los atacantes podrían usar esa misma contraseña para entrar a tus otros servicios.</p>
+                </div>
+                
+                <div class="interactive-section">
+                    <div class="interactive-title">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Simulador de efecto dominó</h4>
+                    </div>
+                    <p>Selecciona cuántas cuentas tienen la misma contraseña para ver el riesgo:</p>
+                    <input type="range" min="1" max="10" value="3" class="tool-input" id="passwordReuseSlider" oninput="updateRiskLevel(this.value)">
+                    <div id="riskOutput" style="text-align: center; margin: 15px 0; font-weight: bold;">3 cuentas con la misma contraseña: Riesgo Alto</div>
+                    <div style="text-align: center;">
+                        <div style="height: 20px; background: linear-gradient(to right, green, yellow, red); border-radius: 10px; margin: 10px 0;"></div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Bajo</span>
+                            <span>Medio</span>
+                            <span>Alto</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>Por eso es esencial que cada cuenta tenga una contraseña única, especialmente las que contienen información crítica como el correo electrónico principal, plataformas educativas, cuentas bancarias y redes sociales.</p>
+            </div>
+            
+            <div class="subtopic">
+                <h4><i class="fas fa-toolbox"></i> Herramientas para la gestión de contraseñas</h4>
+                <p>Recordar muchas contraseñas largas y seguras puede ser complicado. Por eso, existen gestores de contraseñas, que son aplicaciones o programas que almacenan todas tus contraseñas cifradas en un solo lugar. Solo debes recordar una "contraseña maestra" para acceder al resto.</p>
+                
+                <div class="image-container">
+                    <img src="imagenes/CARACTERISTICAS_DE_LOS_GESTORES_DE_CONTRASENAS_-_LISA_Institute.webp" alt="Gestor de contraseñas" class="info-image" style="max-height: 300px;">
+                </div>
+                
+                <p><strong>Ventajas de usar un gestor de contraseñas:</strong></p>
+                <ul>
+                    <li>Generan contraseñas seguras automáticamente.</li>
+                    <li>Guardan las claves de forma segura y encriptada.</li>
+                    <li>Permiten acceso desde múltiples dispositivos.</li>
+                    <li>Evitan la reutilización de contraseñas.</li>
+                </ul>
+                
+                <div class="interactive-section">
+                    <div class="interactive-title">
+                        <i class="fas fa-star"></i>
+                        <h4>Comparativa de Gestores de Contraseñas</h4>
+                    </div>
+                    <table class="comparison-table">
+                        <tr>
+                            <th>Gestor</th>
+                            <th>Ventajas</th>
+                            <th>Desventajas</th>
+                            <th>Precio</th>
+                        </tr>
+                        <tr>
+                            <td>Bitwarden</td>
+                            <td>Código abierto, gratuito</td>
+                            <td>Interfaz menos pulida</td>
+                            <td>Gratuito (premium: $10/año)</td>
+                        </tr>
+                        <tr>
+                            <td>1Password</td>
+                            <td>Excelente interfaz, muy seguro</td>
+                            <td>De pago</td>
+                            <td>$35.88/año</td>
+                        </tr>
+                        <tr>
+                            <td>LastPass</td>
+                            <td>Funcionalidades completas</td>
+                            <td>Historial de brechas de seguridad</td>
+                            <td>Gratuito (premium: $36/año)</td>
+                        </tr>
+                        <tr>
+                            <td>Navegadores</td>
+                            <td>Integrado, fácil de usar</td>
+                            <td>Menos seguro que opciones dedicadas</td>
+                            <td>Gratuito</td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <p><strong>Ejemplos de gestores confiables:</strong></p>
+                <ul>
+                    <li>Bitwarden (gratuito y de código abierto)</li>
+                    <li>1Password</li>
+                    <li>LastPass</li>
+                    <li>NordPass</li>
+                    <li>El gestor integrado en navegadores como Google Chrome o Microsoft Edge</li>
+                </ul>
+                
+                <div class="tool-container">
+                    <div class="interactive-title">
+                        <i class="fas fa-calculator"></i>
+                        <h4>Calculadora de beneficio de gestores</h4>
+                    </div>
+                    <p>¿Cuántas cuentas tienes?</p>
+                    <input type="number" class="tool-input" id="accountCount" value="20" min="5" max="100">
+                    <button class="btn" onclick="calculateTimeSaved()">Calcular tiempo ahorrado</button>
+                    <div class="tool-result" id="timeSavedResult">
+                        <p>Con un gestor de contraseñas, podrías ahorrar aproximadamente <strong>10 horas</strong> al año al no tener que recuperar o restablecer contraseñas olvidadas.</p>
+                    </div>
+                </div>
+                
+                <p>Utilizar un gestor es una solución práctica y profesional para mantener la seguridad digital sin complicaciones.</p>
+            </div>
+            
+            <div class="subtopic">
+                <h4><i class="fas fa-lock"></i> Autenticación de dos factores (2FA/MFA)</h4>
+                <p>La autenticación de dos factores (2FA) es un método de seguridad que requiere dos pruebas para confirmar la identidad del usuario antes de permitir el acceso a una cuenta. Aun si alguien conoce tu contraseña, no podrá acceder sin el segundo paso.</p>
+                
+                <div class="image-container">
+                    <img src="imagenes/2fa_vs_mfa.png" alt="Autenticación de dos factores" class="info-image" style="max-height: 300px;">
+                </div>
+                
+                <p><strong>Tipos de segundo factor más comunes:</strong></p>
+                <ul>
+                    <li><strong>Códigos por SMS:</strong> Se envían a tu número de teléfono registrado.</li>
+                    <li><strong>Aplicaciones autenticadoras:</strong> Como Google Authenticator, Microsoft Authenticator o Authy, generan códigos temporales cada poco segundo.</li>
+                    <li><strong>Biometría:</strong> Huella digital, reconocimiento facial o escaneo de iris, usados en dispositivos modernos.</li>
+                </ul>
+                
+                <div class="example-box">
+                    <p><strong>Ejemplo práctico:</strong> Al iniciar sesión en tu correo electrónico, escribes tu contraseña. Luego, recibes un código de verificación en tu celular que debes ingresar para completar el acceso.</p>
+                </div>
+                
+                <div class="interactive-section">
+                    <div class="interactive-title">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Simulador de Autenticación de Dos Factores</h4>
+                    </div>
+                    <p>Ingresa una contraseña ficticia para simular el proceso 2FA:</p>
+                    <input type="password" class="tool-input" id="fakePassword" placeholder="Contraseña">
+                    <button class="btn" onclick="simulate2FA()">Iniciar sesión</button>
+                    <div class="tool-result" id="verificationCode">
+                        <p>Código de verificación: <strong id="code">123456</strong> (válido por 30 segundos)</p>
+                        <p>Ingresa este código para completar el inicio de sesión.</p>
+                    </div>
+                </div>
+                
+                <p>Este sistema es muy eficaz para evitar accesos no autorizados, incluso si tus credenciales han sido filtradas en internet.</p>
+            </div>
+            
+            <div class="activity-box">
+                <h4>Actividades Sugeridas:</h4>
+                <ul>
+                    <li>Taller Práctico: Utilizar el Generador de Contraseñas Seguras de la web para crear 5 contraseñas robustas y explicarlas.</li>
+                    <li>Simulación: Se le enviará una serie de correos ficticios y tienen que identificar cuáles son los falsos (ej. un correo electrónico o enlace falso).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nav-buttons">
+        <a href="modulo1.html" class="nav-button"><i class="fas fa-arrow-left"></i> Tema Anterior</a>
+        <a href="index.html" class="return-button"><i class="fas fa-home"></i> Volver a Módulos</a>
+        <a href="modulo3.html" class="nav-button">Siguiente Tema <i class="fas fa-arrow-right"></i></a>
+    </div>
+    
+    <script>
+        // Funciones para la interactividad
+        function checkAnswer(element, type) {
+            const feedbacks = element.parentElement.parentElement.querySelectorAll('.quiz-feedback');
+            feedbacks.forEach(fb => fb.style.display = 'none');
+            
+            if (type === 'correct') {
+                element.style.backgroundColor = '#d4edda';
+                element.parentElement.parentElement.querySelector('.correct').style.display = 'block';
+            } else {
+                element.style.backgroundColor = '#f8d7da';
+                element.parentElement.parentElement.querySelector('.incorrect').style.display = 'block';
+                
+                // Encontrar la respuesta correcta y resaltarla
+                const options = element.parentElement.querySelectorAll('.quiz-option');
+                options.forEach(opt => {
+                    if (opt.getAttribute('onclick').includes('correct')) {
+                        opt.style.backgroundColor = '#d4edda';
+                    }
+                });
+            }
+        }
+        
+        function updateRiskLevel(value) {
+            const riskOutput = document.getElementById('riskOutput');
+            let riskText, riskLevel;
+            
+            if (value <= 2) {
+                riskText = "Riesgo Bajo";
+                riskLevel = "Bajo";
+            } else if (value <= 5) {
+                riskText = "Riesgo Medio";
+                riskLevel = "Medio";
+            } else {
+                riskText = "Riesgo Alto";
+                riskLevel = "Alto";
+            }
+            
+            riskOutput.textContent = `${value} cuentas con la misma contraseña: ${riskText}`;
+        }
+        
+        function calculateTimeSaved() {
+            const accountCount = parseInt(document.getElementById('accountCount').value) || 20;
+            // Estimación: 30 minutos por cuenta al año en recuperaciones/reseteos
+            const timeSaved = Math.round(accountCount * 30 / 60);
+            const resultElement = document.getElementById('timeSavedResult');
+            
+            resultElement.innerHTML = `<p>Con un gestor de contraseñas, podrías ahorrar aproximadamente <strong>${timeSaved} horas</strong> al año al no tener que recuperar o restablecer contraseñas olvidadas.</p>`;
+            resultElement.style.display = 'block';
+        }
+        
+        function simulate2FA() {
+            const passwordInput = document.getElementById('fakePassword');
+            const verificationElement = document.getElementById('verificationCode');
+            
+            if (passwordInput.value.length < 1) {
+                alert("Por favor, ingresa una contraseña primero.");
+                return;
+            }
+            
+            // Generar un código aleatorio de 6 dígitos
+            const code = Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('code').textContent = code;
+            
+            verificationElement.style.display = 'block';
+            
+            // Hacer que el código "expire" después de 30 segundos
+            setTimeout(() => {
+                document.getElementById('code').textContent = "XXXXXX (expirado)";
+                document.getElementById('code').style.color = 'red';
+            }, 30000);
+        }
+        
+        // Inicializar algunos valores al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            updateRiskLevel(3);
+        });
+    </script>
+</body>
+</html>
