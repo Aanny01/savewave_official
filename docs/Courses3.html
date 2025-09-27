@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Star Courses - SafeWave</title>
+    <link rel="icon" type="image/png" href="Imagenes/Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a5dcd729dd.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f1f8ff 0%, #e8f5e8 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* ================= HEADER ================= */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: transparent;
+}
+
+header nav a {
+    position: relative;
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding-bottom: 4px;
+}
+
+header nav a:hover,
+header nav a.active {
+    color: #32cd32;
+}
+
+header nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #32cd32;
+    transition: width 0.3s;
+}
+
+header nav a:hover::after,
+header nav a.active::after {
+    width: 100%;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+/* Menú de navegación */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    margin: 0 15px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+    color: #32cd32;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #32cd32;
+    transition: width 0.3s;
+}
+
+nav a:hover::after,
+nav a.active::after {
+    width: 100%;
+}
+
+    
+        /* ================= HERO SECTION ================= */
+        .hero {
+            background: linear-gradient(135deg, rgba(0,180,216,0.8), rgba(0,200,150,0.8)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="tech" patternUnits="userSpaceOnUse" width="100" height="100"><rect width="100" height="100" fill="%23003566"/><circle cx="20" cy="20" r="2" fill="%234ea8de" opacity="0.6"/><circle cx="80" cy="40" r="1.5" fill="%2300c896" opacity="0.5"/></pattern></defs><rect width="1200" height="600" fill="url(%23tech)"/></svg>');
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(78,168,222,0.3) 0%, transparent 60%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        /* ================= MAIN CONTENT ================= */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .free-section .section-title {
+            color: #00c896;
+        }
+
+        .premium-section .section-title {
+            background: linear-gradient(45deg, #00b4d8, #4ea8de);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .free-badge {
+            background: linear-gradient(45deg, #00c896, #7ed957);
+            color: white;
+        }
+
+        .premium-badge {
+            background: linear-gradient(45deg, #00b4d8, #4ea8de);
+            color: white;
+        }
+
+        /* ================= COURSES GRID ================= */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .free-section .course-card {
+            border-left: 4px solid #00c896;
+        }
+
+        .free-section .course-card:hover {
+            border-color: #00c896;
+            box-shadow: 0 15px 30px rgba(0, 200, 150, 0.2);
+        }
+
+        .premium-section .course-card {
+            border-left: 4px solid #00b4d8;
+        }
+
+        .premium-section .course-card:hover {
+            border-color: #00b4d8;
+            box-shadow: 0 15px 30px rgba(0, 180, 216, 0.2);
+        }
+
+        .course-header {
+            height: 80px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .free-section .course-header {
+            background: linear-gradient(135deg, rgba(0, 200, 150, 0.1), rgba(126, 217, 87, 0.1));
+        }
+
+        .premium-section .course-header {
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.1), rgba(78, 168, 222, 0.1));
+        }
+
+        .course-icon {
+            font-size: 2.2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .free-section .course-icon {
+            color: #00c896;
+        }
+
+        .premium-section .course-icon {
+            color: #00b4d8;
+        }
+
+        .course-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .course-subtitle {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .course-description {
+            color: #777;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+
+        .course-level {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            align-self: flex-start;
+        }
+
+        .free-section .course-level {
+            background: linear-gradient(45deg, #00c896, #7ed957);
+            color: white;
+        }
+
+        .premium-section .course-level {
+            background: linear-gradient(45deg, #00b4d8, #4ea8de);
+            color: white;
+        }
+
+        /* ================= FLOATING ELEMENTS ================= */
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape1 {
+            top: 20%;
+            left: 10%;
+            font-size: 2rem;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            top: 60%;
+            right: 15%;
+            font-size: 1.5rem;
+            animation-delay: 2s;
+        }
+
+        .shape3 {
+            top: 40%;
+            left: 70%;
+            font-size: 2.5rem;
+            animation-delay: 4s;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+          background-color: #0a1a2b;
+          color: white;
+          padding: 40px 20px;
+          font-family: Arial, sans-serif;
+          text-align: center;
+        }
+
+        .footer-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          max-width: 1200px;
+          margin: auto;
+          text-align: left;
+        }
+
+        .footer-section {
+          flex: 1 1 250px;
+          margin: 10px;
+        }
+
+        .footer-logo {
+          width: 220px;
+        }
+
+        .footer h2, .footer h3 {
+          color: #7ed957;
+        }
+
+        .footer-section p {
+          max-width: 260px;
+          line-height: 1.6;
+        }
+
+        .footer-links {
+          list-style: none;
+          padding: 0;
+        }
+
+        .footer-links li {
+          margin: 6px 0;
+        }
+
+        .footer-links a {
+          color: white;
+          text-decoration: none;
+        }
+
+        .footer-links a:hover {
+          text-decoration: underline;
+          color: #7ed957;
+          cursor: pointer;
+        }
+
+        .footer-socials {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          text-align: left;
+        }
+
+        .footer-socials li {
+          margin: 10px 0;
+        }
+
+        .footer-socials a {
+          color: white;
+          text-decoration: none;
+          font-size: 1.1rem;
+          display: inline-block;
+        }
+
+        .footer-socials a:hover {
+          color: #4ea8de;
+        }
+
+        .footer-line {
+          margin: 30px auto;
+          border-color: #2c3e50;
+          max-width: 90%;
+        }
+
+        .footer-copy {
+          font-size: 14px;
+          margin-top: 10px;
+        }
+
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-5deg); }
+            75% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        /* ================= RESPONSIVE DESIGN ================= */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .course-card {
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== HEADER ========== -->
+<header>
+ <div class="logo"><a href="index.html"><img src="Imagenes/Logo.png" alt="SafeWave Logo" /></a>SafeWave</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about-us.html">About us</a>
+    <a href="Courses3.html"class="active">Courses</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="Contact.html">Contact</a>
+  </nav>
+    <a href="L-R.html" class="user-btn" title="Registrarse">
+      <i class="fa-solid fa-user"></i>
+    </a>
+  </div>
+</header>
+    
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+        <div class="floating-shapes">
+            <div class="floating-shape shape1">💻</div>
+            <div class="floating-shape shape2">🔒</div>
+            <div class="floating-shape shape3">📱</div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>Explore Our Courses</h1>
+            <p>Discover the full range of courses available on our platform. From free courses to premium specializations.</p>
+        </div>
+    </section>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+        <!-- ================= FREE COURSES SECTION ================= -->
+        <section class="section free-section">
+            <div class="section-header">
+                <div class="badge free-badge">Free Access</div>
+                <h2 class="section-title">Free Courses</h2>
+                <p class="section-subtitle">
+                    Start your learning journey with our fundamental courses, available completely free for all users.
+                </p>
+            </div>
+
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <h3 class="course-title">Python</h3>
+                        <p class="course-subtitle">Basic Programming</p>
+                        <p class="course-description">
+                            Learn Python fundamentals, one of the most popular programming languages.
+                        </p>
+                        <span class="course-level">Beginner</span>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-file-word"></i>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <h3 class="course-title">Microsoft Word</h3>
+                        <p class="course-subtitle">Word Processing</p>
+                        <p class="course-description">
+                            Master essential Word tools for professional documents.
+                        </p>
+                        <span class="course-level">Basic</span>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-file-excel"></i>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <h3 class="course-title">Microsoft Excel</h3>
+                        <p class="course-subtitle">Spreadsheets</p>
+                        <p class="course-description">
+                            Handle data, create formulas and generate professional reports with Excel.
+                        </p>
+                        <span class="course-level">Intermediate</span>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <h3 class="course-title">LinkedIn</h3>
+                        <p class="course-subtitle">Branding Personal y Profesional</p>
+                        <p class="course-description">
+                            Construye tu marca personal y expande tu red profesional con LinkedIn.
+                        </p>
+                        <span class="course-level">Básico</span>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <h3 class="course-title">Mobile Apps</h3>
+                        <p class="course-subtitle">Desarrollo de Aplicaciones</p>
+                        <p class="course-description">
+                            Introducción al desarrollo de aplicaciones móviles modernas.
+                        </p>
+                        <span class="course-level">Intermedio</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PREMIUM COURSES SECTION ================= -->
+        <section class="section premium-section">
+            <div class="section-header">
+                <div class="badge premium-badge">Acceso Premium</div>
+                <h2 class="section-title">Cursos Especializados</h2>
+                <p class="section-subtitle">
+                    Lleva tus habilidades al siguiente nivel con nuestros cursos avanzados y especializaciones profesionales.
+                </p>
+            </div>
+
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <h3 class="course-title">Cybersecurity</h3>
+                        <p class="course-subtitle">Seguridad Digital Avanzada</p>
+                        <p class="course-description">
+                            Especialízate en ciberseguridad y protege sistemas contra amenazas digitales.
+                        </p>
+                        <span class="course-level">Avanzado</span>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <h3 class="course-title">Web Development</h3>
+                        <p class="course-subtitle">Desarrollo Web Moderno</p>
+                        <p class="course-description">
+                            Conviértete en desarrollador full-stack con tecnologías modernas.
+                        </p>
+                        <span class="course-level">Avanzado</span>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-header">
+                        <div class="course-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="course-body">
+                        <h3 class="course-title">Data Analysis</h3>
+                        <p class="course-subtitle">Análisis de Datos con Python</p>
+                        <p class="course-description">
+                            Domina análisis de datos y ciencia de datos usando Python y herramientas modernas.
+                        </p>
+                        <span class="course-level">Intermedio</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+ 
+          
+       <!-- Footer de chill -->
+  <footer class="footer">
+  <div class="footer-container">
+    
+    <!-- Logo y descripción -->
+    <div class="footer-section">
+      <img src="Imagenes/Footer.png" alt="Safe Wave Logo" class="footer-logo">
+      <p>Connecting young people, creating unforgettable experiences and building the future, one click at a time.</p>
+    </div>
+
+    <!-- Enlaces rápidos -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="Courses.html">Courses</a></li>
+        <li><a href="#">Gallery</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contacto -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Safewafe@gmail.com</p>
+      <p>+507 1234-5678</p>
+    </div>
+
+    <!-- Redes sociales -->
+    <div class="footer-section">
+      <h3>Follow us at</h3>
+      <div class="footer-socials">
+        <li><a href="#"><i class="fa-brands fa-facebook"></i>  Facebook </a></li>
+        <li><a href="#"><i class="fa-brands fa-instagram"></i>  Instagram</a></li>
+        <li><a href="#"><i class="fa-brands fa-whatsapp"></i>  WhatsApp</a></li>
+      </div>
+    </div>
+  </div>
+
+  <!-- Línea divisoria y derechos -->
+  <hr class="footer-line">
+  <p class="footer-copy">© 2025 Safe Wave. All rights reserved. - Made with love for youth.</p>
+</footer>
+
+    <script src="js/scriptC.js"></script>
+</body>
+</html>
