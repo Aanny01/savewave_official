@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specialized Certificates</title>
+  <link rel="stylesheet" href="css/style_pago.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #66d039 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #66d039;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin-top: 0.5rem;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .certificate-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(102, 208, 57, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #66d039, #4a9d2a);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 208, 57, 0.2);
+            border-color: #66d039;
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 120px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .certificate-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .certificate-card h3 {
+            font-size: 1.2rem;
+            color: #66d039;
+            margin-bottom: 0.8rem;
+        }
+
+        .certificate-card p {
+            color: #e0e0e0;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .certificate-features {
+            list-style: none;
+            margin-bottom: 0;
+        }
+
+        .certificate-features li {
+            color: #b0e0b0;
+            margin-bottom: 0.4rem;
+            padding-left: 1rem;
+            position: relative;
+            font-size: 0.85rem;
+        }
+
+        .certificate-features li::before {
+            content: "✓";
+            color: #66d039;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .main-cta-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .main-cta-button {
+            background: linear-gradient(45deg, #66d039, #4a9d2a);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(102, 208, 57, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .main-cta-button:hover {
+            background: linear-gradient(45deg, #4a9d2a, #66d039);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(102, 208, 57, 0.5);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+          background-color: #0a1a2b;
+          color: white;
+          padding: 40px 20px;
+          font-family: Arial, sans-serif;
+          text-align: center;
+        }
+
+        .footer-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          max-width: 1200px;
+          margin: auto;
+          text-align: left;
+        }
+
+        .footer-section {
+          flex: 1 1 250px;
+          margin: 10px;
+        }
+
+        .footer-logo {
+          width: 220px;
+        }
+
+        .footer h2, .footer h3 {
+          color: #7ed957;
+        }
+
+        .footer-section p {
+          max-width: 260px;
+          line-height: 1.6;
+        }
+
+        .footer-links {
+          list-style: none;
+          padding: 0;
+        }
+
+        .footer-links li {
+          margin: 6px 0;
+        }
+
+        .footer-links a {
+          color: white;
+          text-decoration: none;
+        }
+
+        .footer-links a:hover {
+          text-decoration: underline;
+          color: #7ed957;
+          cursor: pointer;
+        }
+
+        .footer-socials {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          text-align: left;
+        }
+
+        .footer-socials li {
+          margin: 10px 0;
+        }
+
+        .footer-socials a {
+          color: white;
+          text-decoration: none;
+          font-size: 1.1rem;
+          display: inline-block;
+        }
+
+        .footer-socials a:hover {
+          color: #4ea8de;
+        }
+
+        .footer-line {
+          margin: 30px auto;
+          border-color: #2c3e50;
+          max-width: 90%;
+        }
+
+        .footer-copy {
+          font-size: 14px;
+          margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .header p {
+                font-size: 1rem;
+                max-width: 90%;
+            }
+        }
+  </style>
+</head>
+<body>
+  <!-- ========== HEADER ========== -->
+  <header>
+    <div class="logo"><a href="index.html"><img src="Imagenes/Logo.png" alt="SafeWave Logo" /></a>SafeWave</div>
+    <nav>
+      <a href="index2.html">Home</a>
+      <a href="about-us.html">About us</a>
+      <a href="Courses.html">Courses</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search..." /> 🔍
+      </div>
+      <a href="L-R.html" class="user-btn" title="Register">
+        <i class="fa-solid fa-user"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="container">
+      <header class="header">
+          <h1>Specialized Certificates</h1>
+          <p>Certificates you can obtain through our specialized modules</p>
+      </header>
+
+      <div class="certificates-grid">
+          <div class="certificate-card">
+              <div class="certificate-image">
+                  <img src="https://concepto.de/wp-content/uploads/2018/09/excel3-e1537469723415.jpg" alt="Web Development Certificate">
+              </div>
+              <h3>Microsoft Office Specialist - Excel</h3>
+              <p>Gain expertise in Microsoft Excel, one of the most widely used tools in the digital world.</p>
+              <ul class="certificate-features">
+                  <li>Advanced Excel formulas and functions</li>
+                  <li>Data analysis and visualization with Excel</li>
+                  <li>Pivot tables and data modeling</li>
+                  <li>Automating tasks with macros and VBA</li>
+              </ul>
+          </div>
+
+          <div class="certificate-card">
+              <div class="certificate-image">
+                   <img src="https://sociologiac.net/sociology/wp-content/uploads/2008/08/alternatives-microsoft-word-free-768x419.jpg" alt="Cybersecurity Certificate">
+              </div>
+              <h3>Microsoft Office Specialist - Word</h3>
+              <p>Become proficient in Microsoft Word and master the essential tools for creating professional documents</p>
+              <ul class="certificate-features">
+                  <li>Document creation and formatting</li>
+                  <li>Advanced tools for text and paragraph formatting</li>
+                  <li>Collaboration and sharing features</li>
+                  <li>Templates and mail merge</li>
+              </ul>
+          </div>
+
+          <div class="certificate-card">
+              <div class="certificate-image">
+                   <img src="https://www.devopsschool.com/blog/wp-content/uploads/2022/03/Python-01-2.png" alt="Data Science Certificate">
+              </div>
+            <h3>Python for Data Science Certification</h3>
+<p>Master Python programming to unlock the power of data analysis and machine learning.</p>
+<ul class="certificate-features">
+    <li>Python for data analysis (Pandas, NumPy)</li>
+    <li>Machine learning algorithms with Python (scikit-learn)</li>
+    <li>Data visualization with Matplotlib and Seaborn</li>
+    <li>Big Data handling with PySpark</li>
+</ul>
+
+          </div>
+      </div>
+
+      <div class="main-cta-section">
+          <a href="Courses.html" class="main-cta-button">Go to Courses</a>
+      </div>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <img src="Imagenes/Footer.png" alt="Safe Wave Logo" class="footer-logo">
+        <p>
+          Connecting young people, creating unforgettable experiences, and building the future, one click at a time.
+        </p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="Courses.html">Courses</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="Contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Safewave@gmail.com</p>
+        <p>+507 1234-5678</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Follow us</h3>
+        <ul class="footer-socials">
+          <li><a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a></li>
+          <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="footer-line">
+    <p class="footer-copy">
+      © 2025 Safe Wave. All rights reserved. - Made with love for youth.
+    </p>
+  </footer>
+</body>
+</html>
+
+
+
+
+
