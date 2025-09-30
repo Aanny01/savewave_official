@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Imagenes/Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="css/styleLR.css">
+    <script src="https://kit.fontawesome.com/a5dcd729dd.js" crossorigin="anonymous"></script>
+    <title>SafeWave: Enter your Account</title>
+</head>
+
+<body>
+    <!-- HEADER -->
+<header>
+  <!-- LOGO -->
+  <div class="logo"><a href="index.html"><img src="Imagenes/Logo.png" alt="SafeWave Logo" /></a>SafeWave</div>
+
+  <!-- MENÚ DE NAVEGACIÓN -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about-us.html">About us</a>
+    <a href="Courses3.html">Courses</a>
+    <a href="gallery.html">Gallery</a>
+    <li><a href="Contact.html">Contact</a></li>
+  </nav>
+
+  <!-- BARRA DE BÚSQUEDA -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search..." />
+    🔍
+  </div>
+</header>
+
+<!-- Login Register -->
+<div class="container" id="container">
+    <div class="form-container sign-up">
+        <form id="signup-form">
+            <h1>Create Account</h1>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your email for registeration</span>
+            <input id="signup-name" type="text" placeholder="Name">
+            <input id="signup-email" type="email" placeholder="Email">
+            <input id="signup-password" type="password" placeholder="Password">
+            <div id="signup-message" class="message"></div>
+            <button type="button" id="signup-btn">Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in">
+        <form id="login-form">
+            <h1>Sign In</h1>
+            <div class="social-icons">
+                <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+            <span>or use your email and password</span>
+            <input id="login-email" type="email" placeholder="Email">
+            <input id="login-password" type="password" placeholder="Password">
+            <a href="#">Forget Your Password?</a>
+            <div id="login-message" class="message"></div>
+            <button type="button" id="login-btn">Sign In</button>
+        </form>
+    </div>
+    <div class="toggle-container">
+        <div class="toggle">
+            <div class="toggle-panel toggle-left">
+                <h1>Welcome Back!</h1>
+                <p>Enter your personal details to use all of site features</p>
+                <button class="hidden" id="login-toggle">Sign In</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1>Hello, Friend!</h1>
+                <p>Register with your personal details to use all of site features</p>
+                <button class="hidden" id="register-toggle">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { 
+    getAuth, 
+    createUserWithEmailAndPassword, 
+    signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+// Configuración de Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyCdX5PRjQzb-k_Arm6a9bkxdxm_ykMzmiI",
+    authDomain: "safewave-2025.firebaseapp.com",
+    projectId: "safewave-2025",
+    storageBucket: "safewave-2025.firebasestorage.app",
+    messagingSenderId: "319373701223",
+    appId: "1:319373701223:web:4e9c853d3b534ed7b0e4c2",
+    measurementId: "G-JR5ZH0G6H7"
+};
+
+// Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Función para mostrar mensajes
+function showMessage(elementId, message, isError = false) {
+    const messageElement = document.getElementById(elementId);
+    messageElement.textContent = message;
+    messageElement.className = isError ? 'message error' : 'message success';
+    messageElement.style.display = 'block';
+    
+    // Ocultar mensaje después de 5 segundos
+    setTimeout(() => {
+        messageElement.style.display = 'none';
+    }, 5000);
+}
+
+// Prevenir envío de formularios
+document.getElementById('signup-form').addEventListener('submit', (e) => e.preventDefault());
+document.getElementById('login-form').addEventListener('submit', (e) => e.preventDefault());
+
+// Toggle entre login y registro
+document.getElementById('login-toggle').addEventListener('click', () => {
+    document.getElementById('container').classList.remove('active');
+});
+
+document.getElementById('register-toggle').addEventListener('click', () => {
+    document.getElementById('container').classList.add('active');
+});
+
+// Sign Up
+document.getElementById("signup-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById("signup-email").value;
+    const password = document.getElementById("signup-password").value;
+    const name = document.getElementById("signup-name").value;
+
+    // Validación básica
+    if (!email || !password || !name) {
+        showMessage('signup-message', 'Please fill all fields', true);
+        return;
+    }
+
+    if (password.length < 6) {
+        showMessage('signup-message', 'Password must be at least 6 characters', true);
+        return;
+    }
+
+    showMessage('signup-message', 'Creating account...', false);
+
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            showMessage('signup-message', 'Account created successfully! You can now sign in.');
+            
+            // Limpiar formulario
+            document.getElementById('signup-form').reset();
+            
+            // Cambiar a panel de login después de 2 segundos
+            setTimeout(() => {
+                document.getElementById('container').classList.remove('active');
+            }, 2000);
+        })
+        .catch((error) => {
+            let errorMessage = 'Error creating account: ';
+            
+            switch (error.code) {
+                case 'auth/email-already-in-use':
+                    errorMessage += 'This email is already registered.';
+                    break;
+                case 'auth/invalid-email':
+                    errorMessage += 'Invalid email address.';
+                    break;
+                case 'auth/weak-password':
+                    errorMessage += 'Password is too weak.';
+                    break;
+                case 'auth/network-request-failed':
+                    errorMessage += 'Network error. Please check your connection.';
+                    break;
+                default:
+                    errorMessage += error.message;
+            }
+            
+            showMessage('signup-message', errorMessage, true);
+        });
+});
+
+// Login
+document.getElementById("login-btn").addEventListener("click", (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    // Validación básica
+    if (!email || !password) {
+        showMessage('login-message', 'Please fill all fields', true);
+        return;
+    }
+
+    showMessage('login-message', 'Signing in...', false);
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            showMessage('login-message', 'Login successful! Redirecting...', false);
+            
+            // Redirigir a user.html inmediatamente
+            window.location.href = 'user.html';
+        })
+        .catch((error) => {
+            let errorMessage = 'Error signing in: ';
+            
+            switch (error.code) {
+                case 'auth/invalid-email':
+                    errorMessage += 'Invalid email address.';
+                    break;
+                case 'auth/user-disabled':
+                    errorMessage += 'This account has been disabled.';
+                    break;
+                case 'auth/user-not-found':
+                    errorMessage += 'No account found with this email.';
+                    break;
+                case 'auth/wrong-password':
+                    errorMessage += 'Incorrect password.';
+                    break;
+                case 'auth/network-request-failed':
+                    errorMessage += 'Network error. Please check your connection.';
+                    break;
+                default:
+                    errorMessage += error.message;
+            }
+            
+            showMessage('login-message', errorMessage, true);
+        });
+});
+</script>
+</body>
+</html>
