@@ -1,2 +1,0 @@
-# Exel-Modulos-
-SAFEWAVE
